@@ -1,0 +1,64 @@
+read_geometry -f 'D:/wisim/wisim.qt4/zhanjiang_geom8.cgeo'
+close_geometry
+read_geometry -f 'D:/wisim/wisim.qt4/zhanjiang_geom8.cgeo'
+switch_mode -mode simulate
+create_coverage_analysis -name level_type_0 -type level
+set_coverage_analysis -name level_type_0 -num_scan_type 10
+set_coverage_analysis -name level_type_0 -cell '7' -dmax 500.000000
+set_coverage_analysis -name level_type_0 -use_gpm 0
+set_coverage_analysis -name level_type_0 -scan_fractional_area 0.995000 -init_sample_res 16
+set_coverage_analysis -name level_type_0 -thr_idx 0 -threshold_db -113.010300
+set_coverage_analysis -name level_type_0 -thr_idx 1 -threshold_db -103.010300
+set_coverage_analysis -name level_type_0 -thr_idx 2 -threshold_db -93.010300
+set_coverage_analysis -name level_type_0 -thr_idx 3 -threshold_db -83.010300
+set_coverage_analysis -name level_type_0 -thr_idx 4 -threshold_db -73.010300
+set_coverage_analysis -name level_type_0 -thr_idx 5 -threshold_db -63.010300
+set_coverage_analysis -name level_type_0 -thr_idx 6 -threshold_db -53.010300
+set_coverage_analysis -name level_type_0 -thr_idx 7 -threshold_db -43.010300
+set_coverage_analysis -name level_type_0 -thr_idx 8 -threshold_db -33.010300
+run_coverage -name level_type_0
+close_geometry
+read_geometry -f 'D:/wisim/wisim.qt4/zhanjiang_geom8.cgeo'
+switch_mode -mode simulate
+create_coverage_analysis -name level_type_0 -type level
+set_coverage_analysis -name level_type_0 -num_scan_type 10
+set_coverage_analysis -name level_type_0 -cell '7' -dmax 500.000000
+set_coverage_analysis -name level_type_0 -use_gpm 0
+set_coverage_analysis -name level_type_0 -scan_fractional_area 0.995000 -init_sample_res 16
+set_coverage_analysis -name level_type_0 -thr_idx 0 -threshold_db -113.010300
+set_coverage_analysis -name level_type_0 -thr_idx 1 -threshold_db -103.010300
+set_coverage_analysis -name level_type_0 -thr_idx 2 -threshold_db -93.010300
+set_coverage_analysis -name level_type_0 -thr_idx 3 -threshold_db -83.010300
+set_coverage_analysis -name level_type_0 -thr_idx 4 -threshold_db -73.010300
+set_coverage_analysis -name level_type_0 -thr_idx 5 -threshold_db -63.010300
+set_coverage_analysis -name level_type_0 -thr_idx 6 -threshold_db -53.010300
+set_coverage_analysis -name level_type_0 -thr_idx 7 -threshold_db -43.010300
+set_coverage_analysis -name level_type_0 -thr_idx 8 -threshold_db -33.010300
+run_coverage -name level_type_0
+close_geometry
+read_geometry -f 'D:/wisim/wisim.qt4/zhanjiang_geom8.cgeo'
+switch_mode -mode simulate
+switch_mode -mode edit_geom
+add_polygon -type system_bdy -gptlist '-27 399 441 442 563 125 216 -40 -36 101 -33 261 '
+switch_mode -mode simulate
+create_coverage_analysis -name level_type_0 -type level
+set_coverage_analysis -name level_type_0 -num_scan_type 10
+set_coverage_analysis -name level_type_0 -cell '7' -dmax 500.000000
+set_coverage_analysis -name level_type_0 -use_gpm 1
+set_coverage_analysis -name level_type_0 -scan_fractional_area 0.995000 -init_sample_res 16
+set_coverage_analysis -name level_type_0 -thr_idx 0 -threshold_db -113.010300
+set_coverage_analysis -name level_type_0 -thr_idx 1 -threshold_db -103.010300
+set_coverage_analysis -name level_type_0 -thr_idx 2 -threshold_db -93.010300
+set_coverage_analysis -name level_type_0 -thr_idx 3 -threshold_db -83.010300
+set_coverage_analysis -name level_type_0 -thr_idx 4 -threshold_db -73.010300
+set_coverage_analysis -name level_type_0 -thr_idx 5 -threshold_db -63.010300
+set_coverage_analysis -name level_type_0 -thr_idx 6 -threshold_db -53.010300
+set_coverage_analysis -name level_type_0 -thr_idx 7 -threshold_db -43.010300
+set_coverage_analysis -name level_type_0 -thr_idx 8 -threshold_db -33.010300
+run_coverage -name level_type_0
+set_bitmap -bm_idx 1 -cell_idx '0'
+switch_mode -mode edit_geom
+set_bitmap -bm_idx 5 -cell_idx '0'
+set_color -cell 11141120 -cell_idx '0'
+display_geometry -f 'D:/wisim/wisim.qt4/zhanjiang_geom8.cgeo'
+q

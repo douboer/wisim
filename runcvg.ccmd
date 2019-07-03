@@ -1,0 +1,56 @@
+read_geometry -f 'sectors.cgeo'
+switch_mode -mode simulate
+create_coverage_analysis -name level_type_0 -type level
+set_coverage_analysis -name level_type_0 -num_scan_type 10
+set_coverage_analysis -name level_type_0 -cell '0' -dmax 580.000000
+set_coverage_analysis -name level_type_0 -use_gpm 0
+set_coverage_analysis -name level_type_0 -scan_fractional_area 0.9950 -init_sample_res 8
+set_coverage_analysis -name level_type_0 -thr_idx 0 -threshold_db -63.010300
+set_coverage_analysis -name level_type_0 -thr_idx 1 -threshold_db -59.885300
+set_coverage_analysis -name level_type_0 -thr_idx 2 -threshold_db -56.760300
+set_coverage_analysis -name level_type_0 -thr_idx 3 -threshold_db -53.635300
+set_coverage_analysis -name level_type_0 -thr_idx 4 -threshold_db -50.510300
+set_coverage_analysis -name level_type_0 -thr_idx 5 -threshold_db -47.385300
+set_coverage_analysis -name level_type_0 -thr_idx 6 -threshold_db -44.260300
+set_coverage_analysis -name level_type_0 -thr_idx 7 -threshold_db -41.135300
+set_coverage_analysis -name level_type_0 -thr_idx 8 -threshold_db -38.010300
+run_coverage -name level_type_0
+create_coverage_analysis -name level_type_1 -type level
+set_coverage_analysis -name level_type_1 -num_scan_type 10
+set_coverage_analysis -name level_type_1 -use_gpm 1
+set_coverage_analysis -name level_type_1 -scan_fractional_area 0.995000 -init_sample_res 16
+set_coverage_analysis -name level_type_1 -thr_idx 0 -threshold_db -58.010300
+set_coverage_analysis -name level_type_1 -thr_idx 1 -threshold_db -55.510300
+set_coverage_analysis -name level_type_1 -thr_idx 2 -threshold_db -53.010300
+set_coverage_analysis -name level_type_1 -thr_idx 3 -threshold_db -50.510300
+set_coverage_analysis -name level_type_1 -thr_idx 4 -threshold_db -48.010300
+set_coverage_analysis -name level_type_1 -thr_idx 5 -threshold_db -45.510300
+set_coverage_analysis -name level_type_1 -thr_idx 6 -threshold_db -43.010300
+set_coverage_analysis -name level_type_1 -thr_idx 7 -threshold_db -40.510300
+set_coverage_analysis -name level_type_1 -thr_idx 8 -threshold_db -38.010300
+run_coverage -name level_type_1
+create_coverage_analysis -name level_type_4 -type level
+set_coverage_analysis -name level_type_4 -num_scan_type 21
+set_coverage_analysis -name level_type_4 -use_gpm 1
+set_coverage_analysis -name level_type_4 -scan_fractional_area 0.995000 -init_sample_res 16
+set_coverage_analysis -name level_type_4 -thr_idx 0 -threshold_db -60.000000
+set_coverage_analysis -name level_type_4 -thr_idx 1 -threshold_db -58.579489
+set_coverage_analysis -name level_type_4 -thr_idx 2 -threshold_db -57.158979
+set_coverage_analysis -name level_type_4 -thr_idx 3 -threshold_db -55.738468
+set_coverage_analysis -name level_type_4 -thr_idx 4 -threshold_db -54.317958
+set_coverage_analysis -name level_type_4 -thr_idx 5 -threshold_db -52.897447
+set_coverage_analysis -name level_type_4 -thr_idx 6 -threshold_db -51.476937
+set_coverage_analysis -name level_type_4 -thr_idx 7 -threshold_db -50.056426
+set_coverage_analysis -name level_type_4 -thr_idx 8 -threshold_db -48.635916
+set_coverage_analysis -name level_type_4 -thr_idx 9 -threshold_db -47.215405
+set_coverage_analysis -name level_type_4 -thr_idx 10 -threshold_db -45.794895
+set_coverage_analysis -name level_type_4 -thr_idx 11 -threshold_db -44.374384
+set_coverage_analysis -name level_type_4 -thr_idx 12 -threshold_db -42.953874
+set_coverage_analysis -name level_type_4 -thr_idx 13 -threshold_db -41.533363
+set_coverage_analysis -name level_type_4 -thr_idx 14 -threshold_db -40.112853
+set_coverage_analysis -name level_type_4 -thr_idx 15 -threshold_db -38.692342
+set_coverage_analysis -name level_type_4 -thr_idx 16 -threshold_db -37.271832
+set_coverage_analysis -name level_type_4 -thr_idx 17 -threshold_db -35.851321
+set_coverage_analysis -name level_type_4 -thr_idx 18 -threshold_db -34.430811
+set_coverage_analysis -name level_type_4 -thr_idx 19 -threshold_db -33.010300
+run_coverage -name level_type_4

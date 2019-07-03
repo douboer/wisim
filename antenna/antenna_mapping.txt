@@ -1,0 +1,44 @@
+antenna_type	antenna_model	      name(CHINESE)	           name(ENGLISH)
+			
+	0	HTDW18196510      	 10dB定向		10dB Directional Antenna
+	1	HTDBS196512      	 12dB板状		12dB Panel Antenna
+	2	HTQ-1.9-4.5      	 4.5dB全向		4.5dB omni antenna
+	3	HTQ-1.9-7.0_10   	 7dB下倾10度全向	7dB 10 degree down-tilt omni antenna
+	4	HTQ-1.9-7.0_20   	 7dB下倾20度全向	7dB 20 degree down-tilt omni antenna
+	5	HTQ-1.9-7.2      	 7.2dB全向		7.2dB omni antenna
+	6	HTQ-1.9-9_5      	 9dB下倾5度全向		9dB 5 degree down-tilt omni antenna
+	7	HTQ-1.9-9_10     	 9dB下倾10度全向	9dB 10 degree down-tilt omni antenna
+	8	HTQ-1.9-9_20     	 9dB下倾20度全向	9dB 20 degree down-tilt omni antenna
+	9	HTSX-1.9-13      	 13dB公路型定向		13dB Directional Antenna
+	10	HTDBS196515_N    	 15dB板状		15dB Panel Antenna
+	11	HTDBS196517_N    	 17dB板状		17dB Panel Antenna
+	12	OMNI(仅研究用）             	  			
+	13	HTDW18194512     	 12dB定向		12dB Directional Antenna
+	14	HTQ-2.4-8.0_double	 	
+	15	HTQ-2.4-8.0_10    		
+	16	HTQ-2.445-8.0_10  		
+	17	HTQ-2.49-8.0_10   		
+
+//*由于现场对天线类型的命名没有统一规则，所以基站数据表中的antenna字段最好用antenna_model来描述。
+antenna_model为天线厂家提供的天线型号。*//
+
+10dB.txt    ./HTDW18196510{11.30}/HE1907.txt      HTDW18196510-11_30.txt            NO ROTATION  | HTDW18196510.txt    HTDW18196510.txt
+12dB.txt    ./HTDBS196512(N)/HE1907.txt           HTDBS196512_N.txt                 H:180 V:180  | HTDBS196512(N).txt  HTDBS196512.txt
+4.5dB.txt   ./HTQ-1.9-4.5/HTQ-1.9-4.5.txt         HTQ-1_9-4_5.txt                   H:0   V:-90  | HTQ-1.9-4.5.txt     HTQ-1.9-4.5.txt
+7dB10.txt   ./HTQ-1.9-7.0(10){11.29}/HE1907.txt   HTQ-1_9-7.0-10-11_29.txt          H:0   V: 90  | NOT USED
+7dB20.txt   ./HTQ-1.9-7.0(20){11.29}/HE1907.txt   HTQ-1_9-7.0-20-11_29.txt          H:0   V: 90  | HTQ-1.9-7.0(20).txt HTQ-1.9-7.0_20.txt
+7.2dB.txt   ./HTQ-1.9-7.2/HTQ-1.9-7.2.txt         HTQ-1_9-7_2.txt                   H:0   V: 90  | HTQ-1.9-7.2.txt     HTQ-1.9-7.2.txt
+9dB5.txt    ./HTQ-1.9-9(5)/hv1907.txt             HTQ-1_9-9-5.txt                   H:0   V: 90  | HTQ-1.9-9(5).txt    HTQ-1.9-9_5.txt
+9dB10.txt   ./HTQ-1.9-9.0(10){11.29}/HE1907.txt   HTQ-1_9-9_0-10-11_29.txt          H:0   V: 90  | HTQ-1.9-9(10).txt   HTQ-1.9-9_10.txt
+9dB20.txt   ./HTQ-1.9-9(20)N1.5{11.29}/HE1907.txt HTQ-1_9-9-20-N1_5-11_29.txt       H:0   V: 90  | HTQ-1.9-9(20).txt   HTQ-1.9-9_20.txt
+
+HTDW18194512.txt
+
+Directional Antenna
+    H: nothing
+    V: flip
+
+Omnidirectional Antenna
+    H: nothing
+    V: flip, rotate 90
+

@@ -1,0 +1,306 @@
+TECHNOLOGY: CDMA2000
+FORMAT: 1.0
+COORDINATE_SYSTEM: UTM:6380725:0.006681:48:N
+RESOLUTION: 1
+
+NUM_BDY_PT: 6
+BDY_PT_0: 410000 3390000
+BDY_PT_1: 410500 3390288
+BDY_PT_2: 410500 3390866
+BDY_PT_3: 410000 3391154
+BDY_PT_4: 409500 3390866
+BDY_PT_5: 409500 3390288
+
+NUM_TRAFFIC_TYPE: 1
+TRAFFIC_TYPE_0: "COMM"
+    COLOR: 16711680
+    DURATION_DIST: EXPONENTIAL:60
+
+NUM_SUBNET_0: 0
+
+NUM_ANTENNA_TYPE: 1
+ANTENNA_TYPE_0: OMNI
+
+NUM_PROP_MODEL: 1
+PROP_MODEL_0: "Exponential Model"
+    TYPE: EXPONENTIAL
+    EXPONENT: 3
+    COEFFICIENT: 0.0003125
+
+NUM_TRAFFIC: 1
+    TRAFFIC_TYPE_IDX_0: 0
+
+NUM_CELL: 21
+CELL_0:
+    POSN: 410000 3390115
+    BM_IDX: 0
+    COLOR: 0
+    NUM_SECTOR: 1
+    SECTOR_0:
+        COMMENT: this is cell 0
+        MEAS_CTR_0: 0.476
+        ANGLE_DEG: 0
+        ANTENNA_TYPE: 0
+        ANTENNA_HEIGHT: 25
+        PROP_MODEL: 0
+        TX_POWER: 500
+CELL_1:
+    POSN: 409700 3390288
+    BM_IDX: 0
+    COLOR: 0
+    NUM_SECTOR: 1
+    SECTOR_0:
+        COMMENT: this is cell 1
+        MEAS_CTR_0: 0.476
+        ANGLE_DEG: 0
+        ANTENNA_TYPE: 0
+        ANTENNA_HEIGHT: 25
+        PROP_MODEL: 0
+        TX_POWER: 500
+CELL_2:
+    POSN: 409900 3390288
+    BM_IDX: 0
+    COLOR: 0
+    NUM_SECTOR: 1
+    SECTOR_0:
+        COMMENT: this is cell 2
+        MEAS_CTR_0: 0.476
+        ANGLE_DEG: 0
+        ANTENNA_TYPE: 0
+        ANTENNA_HEIGHT: 25
+        PROP_MODEL: 0
+        TX_POWER: 500
+CELL_3:
+    POSN: 410100 3390288
+    BM_IDX: 0
+    COLOR: 0
+    NUM_SECTOR: 1
+    SECTOR_0:
+        COMMENT: this is cell 3
+        MEAS_CTR_0: 0.476
+        ANGLE_DEG: 0
+        ANTENNA_TYPE: 0
+        ANTENNA_HEIGHT: 25
+        PROP_MODEL: 0
+        TX_POWER: 500
+CELL_4:
+    POSN: 410300 3390288
+    BM_IDX: 0
+    COLOR: 0
+    NUM_SECTOR: 1
+    SECTOR_0:
+        COMMENT: this is cell 4
+        MEAS_CTR_0: 0.476
+        ANGLE_DEG: 0
+        ANTENNA_TYPE: 0
+        ANTENNA_HEIGHT: 25
+        PROP_MODEL: 0
+        TX_POWER: 500
+CELL_5:
+    POSN: 409600 3390461
+    BM_IDX: 0
+    COLOR: 0
+    NUM_SECTOR: 1
+    SECTOR_0:
+        COMMENT: this is cell 5
+        MEAS_CTR_0: 0.476
+        ANGLE_DEG: 0
+        ANTENNA_TYPE: 0
+        ANTENNA_HEIGHT: 25
+        PROP_MODEL: 0
+        TX_POWER: 500
+CELL_6:
+    POSN: 409800 3390461
+    BM_IDX: 0
+    COLOR: 0
+    NUM_SECTOR: 1
+    SECTOR_0:
+        COMMENT: this is cell 6
+        MEAS_CTR_0: 0.476
+        ANGLE_DEG: 0
+        ANTENNA_TYPE: 0
+        ANTENNA_HEIGHT: 25
+        PROP_MODEL: 0
+        TX_POWER: 500
+CELL_7:
+    POSN: 410000 3390461
+    BM_IDX: 0
+    COLOR: 0
+    NUM_SECTOR: 1
+    SECTOR_0:
+        COMMENT: this is cell 7
+        MEAS_CTR_0: 0.476
+        ANGLE_DEG: 0
+        ANTENNA_TYPE: 0
+        ANTENNA_HEIGHT: 25
+        PROP_MODEL: 0
+        TX_POWER: 500
+CELL_8:
+    POSN: 410200 3390461
+    BM_IDX: 0
+    COLOR: 0
+    NUM_SECTOR: 1
+    SECTOR_0:
+        COMMENT: this is cell 8
+        MEAS_CTR_0: 0.476
+        ANGLE_DEG: 0
+        ANTENNA_TYPE: 0
+        ANTENNA_HEIGHT: 25
+        PROP_MODEL: 0
+        TX_POWER: 500
+CELL_9:
+    POSN: 410400 3390461
+    BM_IDX: 0
+    COLOR: 0
+    NUM_SECTOR: 1
+    SECTOR_0:
+        COMMENT: this is cell 9
+        MEAS_CTR_0: 0.476
+        ANGLE_DEG: 0
+        ANTENNA_TYPE: 0
+        ANTENNA_HEIGHT: 25
+        PROP_MODEL: 0
+        TX_POWER: 500
+CELL_10:
+    POSN: 409700 3390635
+    BM_IDX: 0
+    COLOR: 0
+    NUM_SECTOR: 1
+    SECTOR_0:
+        COMMENT: this is cell 10
+        MEAS_CTR_0: 0.476
+        ANGLE_DEG: 0
+        ANTENNA_TYPE: 0
+        ANTENNA_HEIGHT: 25
+        PROP_MODEL: 0
+        TX_POWER: 500
+CELL_11:
+    POSN: 409900 3390635
+    BM_IDX: 0
+    COLOR: 0
+    NUM_SECTOR: 1
+    SECTOR_0:
+        COMMENT: this is cell 11
+        MEAS_CTR_0: 0.476
+        ANGLE_DEG: 0
+        ANTENNA_TYPE: 0
+        ANTENNA_HEIGHT: 25
+        PROP_MODEL: 0
+        TX_POWER: 500
+CELL_12:
+    POSN: 410100 3390635
+    BM_IDX: 0
+    COLOR: 0
+    NUM_SECTOR: 1
+    SECTOR_0:
+        COMMENT: this is cell 12
+        MEAS_CTR_0: 0.476
+        ANGLE_DEG: 0
+        ANTENNA_TYPE: 0
+        ANTENNA_HEIGHT: 25
+        PROP_MODEL: 0
+        TX_POWER: 500
+CELL_13:
+    POSN: 410300 3390635
+    BM_IDX: 0
+    COLOR: 0
+    NUM_SECTOR: 1
+    SECTOR_0:
+        COMMENT: this is cell 13
+        MEAS_CTR_0: 0.476
+        ANGLE_DEG: 0
+        ANTENNA_TYPE: 0
+        ANTENNA_HEIGHT: 25
+        PROP_MODEL: 0
+        TX_POWER: 500
+CELL_14:
+    POSN: 409600 3390808
+    BM_IDX: 0
+    COLOR: 0
+    NUM_SECTOR: 1
+    SECTOR_0:
+        COMMENT: this is cell 14
+        MEAS_CTR_0: 0.476
+        ANGLE_DEG: 0
+        ANTENNA_TYPE: 0
+        ANTENNA_HEIGHT: 25
+        PROP_MODEL: 0
+        TX_POWER: 500
+CELL_15:
+    POSN: 409800 3390808
+    BM_IDX: 0
+    COLOR: 0
+    NUM_SECTOR: 1
+    SECTOR_0:
+        COMMENT: this is cell 15
+        MEAS_CTR_0: 0.476
+        ANGLE_DEG: 0
+        ANTENNA_TYPE: 0
+        ANTENNA_HEIGHT: 25
+        PROP_MODEL: 0
+        TX_POWER: 500
+CELL_16:
+    POSN: 410000 3390808
+    BM_IDX: 0
+    COLOR: 0
+    NUM_SECTOR: 1
+    SECTOR_0:
+        COMMENT: this is cell 16
+        MEAS_CTR_0: 0.476
+        ANGLE_DEG: 0
+        ANTENNA_TYPE: 0
+        ANTENNA_HEIGHT: 25
+        PROP_MODEL: 0
+        TX_POWER: 500
+CELL_17:
+    POSN: 410200 3390808
+    BM_IDX: 0
+    COLOR: 0
+    NUM_SECTOR: 1
+    SECTOR_0:
+        COMMENT: this is cell 17
+        MEAS_CTR_0: 0.476
+        ANGLE_DEG: 0
+        ANTENNA_TYPE: 0
+        ANTENNA_HEIGHT: 25
+        PROP_MODEL: 0
+        TX_POWER: 500
+CELL_18:
+    POSN: 410400 3390808
+    BM_IDX: 0
+    COLOR: 0
+    NUM_SECTOR: 1
+    SECTOR_0:
+        COMMENT: this is cell 18
+        MEAS_CTR_0: 0.476
+        ANGLE_DEG: 0
+        ANTENNA_TYPE: 0
+        ANTENNA_HEIGHT: 25
+        PROP_MODEL: 0
+        TX_POWER: 500
+CELL_19:
+    POSN: 409900 3390981
+    BM_IDX: 0
+    COLOR: 0
+    NUM_SECTOR: 1
+    SECTOR_0:
+        COMMENT: this is cell 19
+        MEAS_CTR_0: 0.476
+        ANGLE_DEG: 0
+        ANTENNA_TYPE: 0
+        ANTENNA_HEIGHT: 25
+        PROP_MODEL: 0
+        TX_POWER: 500
+CELL_20:
+    POSN: 410100 3390981
+    BM_IDX: 0
+    COLOR: 0
+    NUM_SECTOR: 1
+    SECTOR_0:
+        COMMENT: this is cell 20
+        MEAS_CTR_0: 0.476
+        ANGLE_DEG: 0
+        ANTENNA_TYPE: 0
+        ANTENNA_HEIGHT: 25
+        PROP_MODEL: 0
+        TX_POWER: 500

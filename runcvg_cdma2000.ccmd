@@ -1,0 +1,31 @@
+read_geometry -f 'sectors_cdma2000.cgeo'
+switch_mode -mode simulate
+create_coverage_analysis -name level_type_0 -type level
+set_coverage_analysis -name level_type_0 -num_scan_type 10
+set_coverage_analysis -name level_type_0 -cell '0' -dmax 580.000000
+set_coverage_analysis -name level_type_0 -use_gpm 0
+set_coverage_analysis -name level_type_0 -scan_fractional_area 0.9950 -init_sample_res 8
+set_coverage_analysis -name level_type_0 -thr_idx 0 -threshold_db -63.010300
+set_coverage_analysis -name level_type_0 -thr_idx 1 -threshold_db -59.885300
+set_coverage_analysis -name level_type_0 -thr_idx 2 -threshold_db -56.760300
+set_coverage_analysis -name level_type_0 -thr_idx 3 -threshold_db -53.635300
+set_coverage_analysis -name level_type_0 -thr_idx 4 -threshold_db -50.510300
+set_coverage_analysis -name level_type_0 -thr_idx 5 -threshold_db -47.385300
+set_coverage_analysis -name level_type_0 -thr_idx 6 -threshold_db -44.260300
+set_coverage_analysis -name level_type_0 -thr_idx 7 -threshold_db -41.135300
+set_coverage_analysis -name level_type_0 -thr_idx 8 -threshold_db -38.010300
+run_coverage -name level_type_0
+create_coverage_analysis -name level_type_1 -type level
+set_coverage_analysis -name level_type_1 -num_scan_type 10
+set_coverage_analysis -name level_type_1 -use_gpm 1
+set_coverage_analysis -name level_type_1 -scan_fractional_area 0.995000 -init_sample_res 16
+set_coverage_analysis -name level_type_1 -thr_idx 0 -threshold_db -96.000000
+set_coverage_analysis -name level_type_1 -thr_idx 1 -threshold_db -90.250000
+set_coverage_analysis -name level_type_1 -thr_idx 2 -threshold_db -84.500000
+set_coverage_analysis -name level_type_1 -thr_idx 3 -threshold_db -78.750000
+set_coverage_analysis -name level_type_1 -thr_idx 4 -threshold_db -73.000000
+set_coverage_analysis -name level_type_1 -thr_idx 5 -threshold_db -67.250000
+set_coverage_analysis -name level_type_1 -thr_idx 6 -threshold_db -61.500000
+set_coverage_analysis -name level_type_1 -thr_idx 7 -threshold_db -55.750000
+set_coverage_analysis -name level_type_1 -thr_idx 8 -threshold_db -50.000000
+run_coverage -name level_type_1

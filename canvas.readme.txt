@@ -1,0 +1,808 @@
+
+190628 wisim to be done
+----------------------------------------
+1. color gradient in coverage analysis
+   like:https://www.acrylicwifi.com/en/blog/wlan-heatmap-wi-fi-coverage-map/
+   https://www.particleincell.com/2014/colormap/
+   https://stackoverflow.com/questions/7706339/grayscale-to-red-green-blue-matlab-jet-color-scale
+   SOLVED!
+
+2. 3D mimo simulaiton
+   5G
+
+3. ray tracing + map with different clutter simulation
+
+4. coverage not draw in special polygon(obstacles, like wall,door)
+
+5. 5G channel model
+  http://www.5gworkshops.com/5GCM.html
+  https://wireless.engineering.nyu.edu/nyusim-5g-and-6g/
+  https://futurenetworks.ieee.org/tech-focus/march-2017/5g-channel-model
+
+
+
+
+
+
+----------------------------------------
+
+antenna az - Azimuth
+        ei - elevation
+        azimuth and elevation angles.
+
+----------------------------------------
+
+
+
+
+
+
+void FigureEditor::regenCanvas(int cx, int cy)
+{
+    int traffic_type_idx;
+#if CDEBUG
+    printf("Begin regenCanvas()\n");
+#endif
+
+    /**************************************************************************************/
+    /**** Clear the Canvas                                                             ****/
+    /**************************************************************************************/
+#if CDEBUG
+    printf("regenCanvas(): calling clear()\n");
+#endif
+
+    clear();
+    canvas()->update();
+
+#if CDEBUG
+    printf("regenCanvas(): clear() done\n");
+#endif
+    /**************************************************************************************/
+
+    /*
+    Compute corners of Canvas
+    (c_pmXL, c_pmYL), (c_pmXH, c_pmYH)为canvas左上角，右下角的用pixel表示的用户坐标(user coordination)
+
+                   canvas
+ (c_pmXL, c_pmYL)
+    o---------------------------------+--->
+    |                                 |
+    |                                 |
+    |                |                |
+    |              --o--(cx,cy)-pixel |
+    |                |                |
+    |                                 |
+    |                                 |
+    +---------------------------------o
+    |                           (c_pmXH, c_pmYH)
+    |
+    v 
+    */
+
+    c_pmXL = cx - (canvas()->width()-1)/2;
+    c_pmXH = c_pmXL + canvas()->width()-1;
+    c_pmYL = cy - (canvas()->height()-1)/2;
+    c_pmYH = c_pmYL + canvas()->height()-1;
+
+
+    VisibilityWindow *vw = visibility_window;
+    /**************************************************************************************/
+    /**** Draw Background Pixmap                                                       ****/
+    /**************************************************************************************/
+    bgr_pm = new PixmapItem(this);
+
+    if (np->mode == CConst::noGeomMode) {
+        bgr_pm->fill(QColor(128,128,128));
+    } else {
+        bgr_pm->fill(Qt::white);
+#if CDEBUG
+        bgr_pm->drawResolutionGrid(this);
+#endif
+    }
+
+    if (vw->vis_map_height) {
+        bgr_pm->drawMapHeight(this);
+    }
+    if (vw->vis_map_background) {
+        bgr_pm->drawMapBackground(this);
+    }
+    if (vw ->vis_map_clutter) {
+        bgr_pm->drawMapClutter(this, vw->vec_vis_map_clutter);
+    }
+    if (vw ->vis_clutter_prop_model) {
+        bgr_pm->drawClutterPropModel(this, vw->vec_vis_clutter_prop_model);
+    }
+
+    if ( vw->vis_map_layer ) {
+        bgr_pm->drawMapLayer(this, vw->vec_vis_map_layer);
+    }
+    if ( vw->vis_system_boundary ) {
+        bgr_pm->drawSystemBoundary(this);
+    }
+    if (vw->vis_subnet) {
+        bgr_pm->drawSubnet(this, vw->vec_vis_subnet);
+    }
+    if ( vw->vis_coverage) {
+        bgr_pm->drawCoverage(this, vw->vec_vis_coverage);
+    }
+    if ( vw->vis_road_test_data ) {
+        bgr_pm->drawRoadTestData(this, vw->num_road_test_data_set, vw->vec_vis_road_test_data, vw->vec_rtd_cell_idx, vw->vec_rtd_sector_idx, vw->vec_vis_rtd_level);
+    }
+    if (vw->vis_antenna) {
+        bgr_pm->drawDirAntenna(this);
+    }
+    
+    /*
+    contentsX, contentsY ?
+
+    margin defined by cellsim, margin is a factor
+        - magin * visibleWidth() = marginW
+        - magin * visibleHeight() = marginH
+
+
+                  canvas
+    o---------------------------------+------>
+    |                                 |
+    |            marginH              |
+    |        visible window           |
+    |           +---------+           |
+    |           |         |           |
+    |  marginW  |    +    |  marginW  |
+    |           |         |           |
+    |           +---------+           |
+    |                                 |
+    |            marginH              |
+    |                                 |
+    +---------------------------------o
+    | 
+    | 
+    v 
+                  
+               visible window
+(contentsX,contentsY)
+        o----------------------------+---->
+        |                            |
+        |                            |
+        |                            |
+        |             +(cx,cy)       | Visible Height
+        |                            |
+        |                            |
+        |                            |
+        +----------------------------o
+        |      Visible Width        
+        | 
+        v 
+
+
+         user corrdination (UTM, GRID)
+
+        ^ Y
+        |
+        |
+        |
+        |
+        |
+        +----------------->
+                          X
+
+    visible window
+    (x1,y1)
+     ----------------------------
+    |   (vx1,vy1)                |
+    |       ---------------      |
+    |      | viewport      |     |
+    |      | (zoom polygon)|     |
+    |      |               |     |
+    |       ---------------      |
+    |                  (vx2,vy2) |
+    |                            |
+     ---------------------------- (x2,y2)
+
+zx = (x2-x1) / (vx2-vx1)
+zy = (y2-y1) / (vy2-vy1)
+zoom factor : z = zx > zy ? zy : zx;
+
+canvas coordination 20190627
+-----------------------------
+
+ (c_pmXL,c_pmYL)
+    --------------------------------------------------------------------------------------
+    |                                                                                    |
+    |                                                                                    |
+    |                                                                                    |
+    |                                                                                    |
+    |                                                                                    |
+    |                                                                                    |
+    |                                                                                    |
+    |                    uy ^                                                            |
+    |         (0,0)         |                                                            |
+    |           o-----------|-----------> px                                             |
+    |           |           |  npts_x                                                    |
+    |           |           |____________o (maxx,maxy)                                   |
+    |           |           |  /******\  |                                               |
+    |           |           | /********\ |                                               |
+    |           |           |/**********\|                                               |
+    |           |           |\**********/| npts_y                                        |
+    |           |           | \********/ |                                               |
+    |           |           |  \******/  |                                               |
+    |           |        uo o--------------------> ux                                    |
+    |           |           (system_startx, system_starty) -- UTM , grid                 |
+    |           |           (minx, miny)                                                 |
+    |           V py        (-c_pmXL,-c_pmYL)                                            |
+    |                                                                                    |
+    --------------------------------------------------------------------------------------
+
+for examle:
+  (-80,-120) => (c_pmXL,c_pmYL)
+    --------------------------
+    |
+    |
+    |      canvas   ^
+    |       (0,0)   |
+    |       o-------|->px
+    |       |       |
+    |       |       |
+    |       |       |
+    |       |       |
+    |       |       o-------------->
+    |       |   (-c_pmXL,-c_pmYL) => (80,120)
+         py V
+
+
+//20190627 CG
+p0 (-c_pmXL,-c_pmYL) - user pixel original in canvas coordination
+                       user(0,0) to canvas(pixel)
+                       新坐标系(用户坐标系)原点在老坐标系（canvas坐标系）下的坐标
+==>
+                       ux =   px - (-c_pmXL)  =   px + c_pmXL 
+                       uy = -(py - (-c_pmYL)) = -(py + c_pmYL)   // move + y-mirror
+
+<==>
+// see FigureEditor::canvas_to_xy
+                       ux =  (x_canvas+c_pmXL)/zoom;
+                       uy = -(y_canvas+c_pmYL)/zoom;
+
+canvas (0,0) to user u0(c_pmXL,-c_pmYL)
+                       px =  ux -    c_pmXL
+                       py = -(uy - (-c_pmYL))  // mirror
+<==>
+// see FigureEditor::xy_to_canvas
+                       x_canvas = px*zoom - c_pmXL;
+                       y_canvas =  -c_pmYL - py*zoom;
+
+zoom > 1 ==> zoom in
+zoom < 1 ==> zoom out
+user (ux,uy) * zomm ==> canvas (px,py)
+
+    o----------------------------------------> px
+    |
+    |         user coordination
+    |
+    |      uy ^
+    |         |
+    |         |  npts_x
+    |         |____________o (npts_x, npts_y) - grid
+    |         |  /******\  |
+    |         | /********\ |
+    |         |/**********\|
+    |         |\**********/| npts_y
+    |         | \********/ |
+    |         |  \******/  |
+    |         o--------------------> ux
+    |       U0 (0,0) => P0 (-c_pmXL,-c_pmYL)
+    |
+    V
+    py
+
+
+坐标变换:
+平移 - 新坐标系(nx,ny)原点(nx0,ny0)在老坐标系(ox,oy)下的坐标(ox', oy')
+老坐标系下的任何点(ox,oy)在新坐标系下的位置(nx,ny) :
+    nx = ox - ox'
+    ny = oy - oy'
+move + y mirrow ==>  nx = ox - ox'
+              ny = -(oy - oy')
+
+==>  WiSim coordination
+
+canvas coordination origin point p0(0,0) in user coordination is u0 (c_pmXL,-c_pmYL)
+ux = px - (-c_pmXL) = px + c_pmXL 
+uy = -(py - (-c_pmYL)) = -(px + c_pmYL)   // and mirror
+
+u0x =   0-(-c_pmXL)  =  c_pmXL
+u0y = -(0-(-c_pmYL)) = -c_pmYL
+(c_pmXL, -c_pmYL)
+
+user coordination origin point u0 (0,0) translator to canvas coordination p0(-c_pmXL,-c_pmYL)
+p0x =   0-(c_pmXL)   = -c_pmXL
+p0y = -(0-(-c_pmYL)) = -c_pmYL
+(-c_pmXL, -c_pmYL)
+
+canvas to user coordination :
+    ux =  (px - (-c_pmXL))/zoom;
+    uy = -(py - (-c_pmYL))/zoom;
+
+user to canvas coordination :
+    px =   ux*zoom -  (c_pmXL)
+    py = -(uy*zoom - (-c_pmYL))
+
+contentsX()
+This property holds the X coordinate of the contents that are at the left edge of the viewpor
+contentsY()
+This property holds the Y coordinate of the contents that are at the top edge of the viewport.
+
+
+(system_startx, system_starty) UTM coordination of left-bottom of system boundary
+thie (grid_x, grid_y) is (0,0)
+
+UTM coordination
+npts_x = maxx-minx
+npts_y = maxy-miny
+
+
+    /**************************************************************************************/
+    /**** Compute corners of Canvas                                                    ****/
+    /**************************************************************************************/
+    --------------------------------------
+    int cx = c_pmXL + (c_pmXH - c_pmXL)/2;
+    int cy = c_pmYL + (c_pmYH - c_pmYL)/2;
+
+    c_pmXL = cx - (canvas()->width()-1)/2;
+    c_pmXH = c_pmXL + canvas()->width()-1;
+    c_pmYL = cy - (canvas()->height()-1)/2;
+    c_pmYH = c_pmYL + canvas()->height()-1;
+
+    --------------------------------------
+
+    system_bdy->comp_bdy_min_max(minx, maxx, miny, maxy);
+    system_startx = minx;
+    system_starty = miny;
+    npts_x = maxx - minx + 1;
+    npts_y = maxy - miny+ 1;
+    --------------------------------------
+
+    canvas()->width()  = c_pmXH - c_pmXL
+    canvas()->height() = c_pmYH - c_pmYL
+
+
+void PositionClass::setPosition(NetworkClass *np, FigureEditor *editor, QMouseEvent *e)
+{
+    pixel_x = e->pos().x();
+    pixel_y = e->pos().y();
+
+    editor->canvas_to_xy(grid_x, grid_y, pixel_x, pixel_y);
+
+    posn_x = np->idx_to_x(grid_x);
+    posn_y = np->idx_to_y(grid_y);
+
+    if (np->coordinate_system == CConst::CoordUTM) {
+        UTMtoLL( posn_x, posn_y, lon_deg,  lat_deg, np->utm_zone, np->utm_north,
+                 np->utm_equatorial_radius, np->utm_eccentricity_sq);
+    }
+}
+
+
+void FigureEditor::resizeCanvas()
+{    
+    clear();
+
+    canvas()->resize( (int) floor(visibleWidth() *(1+2*margin)),
+                      (int) floor(visibleHeight()*(1+2*margin)));
+
+    int center_x = (int) floor(c_pmXL + contentsX() + (visibleWidth()  - 1)/2.0);
+    int center_y = (int) floor(c_pmYL + contentsY() + (visibleHeight() - 1)/2.0);
+
+    regenCanvas(center_x, center_y);
+    regenPrintRect();
+}
+/******************************************************************************************/
+/**** FUNCTION: FigureEditor::scrollCanvas                                             ****/
+/******************************************************************************************/
+void FigureEditor::scrollCanvas(int x, int y)
+{
+    int center_x = (int) floor(c_pmXL + contentsX() + (visibleWidth()  - 1)/2.0 - zoom*x);
+    int center_y = (int) floor(c_pmYL + contentsY() + (visibleHeight() - 1)/2.0 + zoom*y);
+    regenCanvas(center_x,center_y);
+}
+
+/******************************************************************************************/
+/**** FUNCTION: FigureEditor::scrollUp                                                 ****/
+/******************************************************************************************/
+
+/*
+contentsX() + (visibleWidth()  - 1)/2.0 = (canvas->width()-1)/2  ?
+*/
+void FigureEditor::scrollUp()
+{
+    int center_x = c_pmXL + (canvas()->width()-1)/2;
+    int center_y = c_pmYL + (canvas()->height()-1)/2;
+
+    regenCanvas(center_x, center_y-1);
+}
+/******************************************************************************************/
+/**** FUNCTION: FigureEditor::scrollDown                                               ****/
+/******************************************************************************************/
+void FigureEditor::scrollDown()
+{
+    int center_x = c_pmXL + (canvas()->width()-1)/2;
+    int center_y = c_pmYL + (canvas()->height()-1)/2;
+
+    regenCanvas(center_x, center_y+1);
+}
+/******************************************************************************************/
+/**** FUNCTION: FigureEditor::scrollLeft                                               ****/
+/******************************************************************************************/
+void FigureEditor::scrollLeft()
+{
+    int center_x = c_pmXL + (canvas()->width()-1)/2;
+    int center_y = c_pmYL + (canvas()->height()-1)/2;
+
+    regenCanvas(center_x-1, center_y);
+}
+/******************************************************************************************/
+/**** FUNCTION: FigureEditor::scrollRight                                              ****/
+/******************************************************************************************/
+void FigureEditor::scrollRight()
+{
+    int center_x = c_pmXL + (canvas()->width()-1)/2;
+    int center_y = c_pmYL + (canvas()->height()-1)/2;
+
+    regenCanvas(center_x+1, center_y);
+}
+
+
+
+
+/*
+    ^ Y
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    +-------------------------->
+                               X
+ */
+/******************************************************************************************/
+/**** FUNCTION: FigureEditor::xy_to_canvas                                             ****/
+/******************************************************************************************/
+void FigureEditor::xy_to_canvas(int& x_canvas, int& y_canvas, int x, int y)
+{
+    x_canvas = (int) floor(x*zoom) - c_pmXL;
+    y_canvas =  -c_pmYL - (int) floor(y*zoom);
+    return;
+}
+/******************************************************************************************/
+/**** FUNCTION: FigureEditor::xy_to_canvas                                             ****/
+/******************************************************************************************/
+void FigureEditor::xy_to_canvas(int& x_canvas, int& y_canvas, double x, double y)
+{
+    x_canvas = (int) floor(x*zoom) - c_pmXL;
+    y_canvas =  -c_pmYL - (int) floor(y*zoom);
+    return;
+}
+/******************************************************************************************/
+/**** FUNCTION: FigureEditor::canvas_to_xy                                             ****/
+/******************************************************************************************/
+void FigureEditor::canvas_to_xy(int& x, int& y, int x_canvas, int y_canvas)
+{
+    x = (int) floor( (x_canvas+c_pmXL)/zoom);
+    y = (int) floor(-(y_canvas+c_pmYL)/zoom);
+    return;
+}
+/******************************************************************************************/
+/**** FUNCTION: FigureEditor::canvas_to_xy                                             ****/
+/******************************************************************************************/
+void FigureEditor::canvas_to_xy(double& x, double& y, int x_canvas, int y_canvas)
+{
+    x =  (x_canvas+c_pmXL)/zoom;
+    y = -(y_canvas+c_pmYL)/zoom;
+    return;
+}
+
+
+mouse.cpp
+--------------------------------------
+void FigureEditor::contentsMouseReleaseEvent(QMouseEvent* e)
+{
+    int clutter_idx;
+    int center_x, center_y;
+    int add_select, use_region;
+    double zx, zy, zf, *dist_vector;
+    QCanvasItemList canvas_item_list;
+    QCanvasItemList::Iterator it;
+
+    mousePosition->setPosition(np, this, e);
+
+    switch(mouseMode) {
+        case GConst::zoomMode:
+            zx = (visibleWidth()  - 1.0) / (abs(selectRegion->width())-1);
+            zy = (visibleHeight() - 1.0) / (abs(selectRegion->height())-1);
+            zf = ((zx < zy) ? zx : zy);
+
+            center_x = (int) floor(zf*(c_pmXL + selectRegion->x() + (selectRegion->width()  - 1)/2.0));
+            center_y = (int) floor(zf*(c_pmYL + selectRegion->y() + (selectRegion->height() - 1)/2.0));
+
+            // setMouseMode(GConst::selectMode);
+            delete selectRegion;
+            selectRegion = (QCanvasRectangle *) NULL;
+
+            zoom *= zf;
+            regenCanvas(center_x,center_y);
+            break;
+        case GConst::scrollMode:
+            center_x = (int) floor(c_pmXL + contentsX() + (visibleWidth()  - 1)/2.0);
+            center_y = (int) floor(c_pmYL + contentsY() + (visibleHeight() - 1)/2.0);
+            regenCanvas(center_x,center_y);
+            break;
+        case GConst::measPathMode:
+            dist_vector = (double *) malloc( np->map_clutter->num_clutter_type * sizeof(double));
+            printf("Path End Point (%d, %d)\n", mousePosition->grid_x, mousePosition->grid_y);
+
+            printf("Calling get_path_clutter: (%d, %d) --> (%d, %d)\n", meas_path_x, meas_path_y, mousePosition->grid_x, mousePosition->grid_y);
+            np->get_path_clutter(meas_path_x, meas_path_y, mousePosition->grid_x, mousePosition->grid_y, dist_vector);
+
+            for (clutter_idx=0; clutter_idx<=np->map_clutter->num_clutter_type-1; clutter_idx++) {
+                printf("Clutter type %2d Dist = %15.10f (%s)\n", clutter_idx, dist_vector[clutter_idx], np->map_clutter->description[clutter_idx]);
+            }
+            setMouseMode(GConst::selectMode);
+            free(dist_vector);
+            break;
+        case GConst::drawPolygonMode:
+            addPolygon(GConst::mouseRelease, e);
+            break;
+        case GConst::addCellMode:
+            if (e->button() == LeftButton) {
+                sprintf(np->line_buf, "add_cell -posn_x %9.7f -posn_y %9.7f -num_sector 1",
+                    mousePosition->posn_x, mousePosition->posn_y);
+                np->process_command( np->line_buf);
+            }
+
+            setMouseMode(GConst::selectMode);
+            break;
+        case GConst::moveCellMode:
+            sprintf(np->line_buf, "move_cell -cell_idx %d -posn_x %9.7f -posn_y %9.7f",
+                    selectCell->getCellIdx(), mousePosition->posn_x, mousePosition->posn_y);
+                np->process_command( np->line_buf);
+            selectCell = (GCellClass *) NULL;
+            setMouseMode(GConst::selectMode);
+            break;
+        // 2007-03-27 MOD
+        /**
+        case GConst::toggleNoiseMode:
+            sprintf(np->line_buf, "toggle_noise");
+            np->process_command( np->line_buf);
+            setMouseMode(GConst::selectMode);
+            break;
+         */
+        case GConst::selectMode:
+            if (e->button() == LeftButton) {
+                if (e->state() & Qt::ShiftButton) {
+                    add_select = 1;
+                } else {
+                    add_select = 0;
+                }
+                if ( selectRegion && (selectRegion->width() || selectRegion->height())) {
+                    use_region = 1;
+                } else {
+                    use_region = 0;
+                }
+                if ( use_region ) {
+                    canvas_item_list = canvas()->collisions(selectRegion->rect());
+                } else {
+                    canvas_item_list = canvas()->collisions(QPoint(mousePosition->pixel_x, mousePosition->pixel_y));
+                }
+
+                int found = 0;
+                for (it=canvas_item_list.begin(); it!=canvas_item_list.end(); ++it) {
+                    if ( (*it)->rtti() == GConst::cellRTTI ) {
+                        selectCell = (GCellClass *) *it;
+                        found++;
+                    }
+                }
+                if (!add_select) {
+                    select_cell_list->reset();
+                }
+                if (found) {
+                    for (it=canvas_item_list.begin(); it!=canvas_item_list.end(); ++it) {
+                        if ( (*it)->rtti() == GConst::cellRTTI ) {
+                            selectCell = (GCellClass *) *it;
+                            if ( (add_select) && (!use_region) ) {
+                                select_cell_list->toggle_elem(selectCell->getCellIdx());
+                            } else {
+                                select_cell_list->ins_elem(selectCell->getCellIdx(), 0);
+                            }
+                        }
+                    }
+                }
+
+                setVisibility(GConst::cellRTTI);
+
+                if ( selectRegion ) {
+                    delete selectRegion;
+                    selectRegion = (QCanvasRectangle *) NULL;
+                }
+
+                emit selection_changed(select_cell_list);
+            }
+            break;
+    }
+}
+
+
+------------------------------------------------------
+(pixel_x, pixel_y) canvas像素坐标
+(grid_x, grid_y) 系统使用坐标
+(posn_x, posn_y) 实际UTM坐标
+(lon_deg, lat_deg) 实际经纬度坐标
+
+------------------------------------------------------
+
+
+CLUTTER
+------------------------------------------------------
+/*
+
+    ^ Y
+    |
+    |
+    |
+    o------->
+            X
+                                  |<--->| clutter resolution ratio
+                                  |     |
+    +-----------------------------|-----+
+    |     |     |     |     |     |     |
+    |     |     |     |     |     |     |
+    |-----|-----------------------------|
+    |     |XXXXX|     |     |     |     |
+    | 12  |XXXXX| 14  |     |     |     |
+    |-----|-----------------------------|
+    |     |     |     |     |     |     |
+    |  6  |  7  |  8  |  9  | 10  | 11  |
+    |-----|-----------------------------|
+    |     |     |     |     |     |     |
+    |  0  |  1  |  2  |  3  |  4  |  5  |
+    o-----------------------------------+
+  (offset_x, offset_y) is the (grid_x, grid_y) of left_bottom corner
+
+
+Clutter Map Coordinates: (map_i, map_j) -> (1, 2)
+Clutter Index:  map_j*npts_x + map_i -> 2*6 + 1 = 13
+NPTS_X: 6
+NPTS_Y: 4
+OFFSET_X: -487
+OFFSET_Y: -216
+CLUTTER_SIM_RES_RATIO: 16
+Clutter Coefficient: -0.0815804
+*/
+
+
+To be Change:
+----------------------------------------
+Dock windows like example C:\Qt\4.7.1\demos\mainwindow
+background map show in front
+
+
+20190628
+--------------------------------------------
+1. what is the function of mesh.cpp ?
+   why call MeshClass::simplify when run coverage ?
+
+coverage simulation
+main
+ |
+coverage.cpp : run_coverage()
+               scan_area(this, cvg->init_sample_res, coverage_sir_layer_scan_fn, xmin, xmax, ymin, ymax);
+ |
+subnet.cpp   : scan_area(this, cvg->init_sample_res, coverage_sir_layer_scan_fn, xmin, xmax, ymin, ymax);
+               (*scan_fn)(np, posn_x, posn_y);
+ |
+coverage.cpp : coverage_sir_layer_scan_fn(np, posn_x, posn_y)
+
+--------------------------------
+scan_area()
+--------------------------------
+
+        /*
+         *  scan_array is number of npts_x * npts_y two dimension array
+         *  here posn_x,posn_y is iterator for npts not UTM coordination
+            e             00 01 10 11
+            tx = e>>1     0  0  1  1
+            ty = e&1      0  1  0  1
+         */
+        for (e = (first_time ? 0 : 1); e<=3; e++) {
+            tx = e>>1;
+            ty = e&1;
+            for (posn_x=tx*scan_res; posn_x<=np->npts_x-1; posn_x+=2*scan_res) {
+                for (posn_y=ty*scan_res; posn_y<=np->npts_y-1; posn_y+=2*scan_res) {
+                    do_scan = 1;
+                    if ( (posn_x < xmin) || (posn_x > xmax) || (posn_y < ymin) || (posn_y > ymax) ) {
+                        do_scan  = 0;
+                        scan_idx = CConst::NullScan;
+                    }
+                    // if do_scan=0, no need to judge (x,y) position - Chengan
+                    //if (!np->system_bdy->in_bdy_area(posn_x, posn_y)) {
+                    if (do_scan && !np->system_bdy->in_bdy_area(posn_x, posn_y)) {
+                        do_scan  = 0;
+                        scan_idx = CConst::NullScan;
+                    }
+
+                    // CGDBG
+#if 0
+                    //if(posn_x%10==0) 
+                    {
+                        sprintf(np->msg, "tx %d ty %d posn_x %d posn_y %d \n", tx,ty,posn_x,posn_y);
+                        PRMSG(stdout, np->msg); np->error_state = 1;
+                    }
+#endif
+
+                    if ((!first_time)&&(do_scan)) {
+                        if (   (tx==0) && (ty==1)
+                            && (posn_x >= 2*scan_res) && (posn_x <= np->npts_x-1-2*scan_res)
+                            && (posn_y >=   scan_res) && (posn_y <= np->npts_y-1-scan_res) ) {
+                            scan_idx = np->scan_array[posn_x][posn_y+scan_res];
+                            if (    (np->scan_array[posn_x           ][posn_y-scan_res] == scan_idx)
+                                 && (np->scan_array[posn_x+2*scan_res][posn_y+scan_res] == scan_idx)
+                                 && (np->scan_array[posn_x+2*scan_res][posn_y-scan_res] == scan_idx)
+                                 && (np->scan_array[posn_x-2*scan_res][posn_y+scan_res] == scan_idx)
+                                 && (np->scan_array[posn_x-2*scan_res][posn_y-scan_res] == scan_idx) ) {
+                                do_scan = 0;
+                            }
+                        } else if (    (tx==1) && (ty==0)
+                                    && (posn_x >=   scan_res) && (posn_x <= np->npts_x-1-scan_res)
+                                    && (posn_y >= 2*scan_res) && (posn_y <= np->npts_y-1-2*scan_res) ) {
+                            scan_idx = np->scan_array[posn_x+scan_res][posn_y];
+                            if (    (np->scan_array[posn_x-scan_res][posn_y           ] == scan_idx)
+                                 && (np->scan_array[posn_x+scan_res][posn_y+2*scan_res] == scan_idx)
+                                 && (np->scan_array[posn_x-scan_res][posn_y+2*scan_res] == scan_idx)
+                                 && (np->scan_array[posn_x+scan_res][posn_y-2*scan_res] == scan_idx)
+                                 && (np->scan_array[posn_x-scan_res][posn_y-2*scan_res] == scan_idx) ) {
+                                do_scan = 0;
+                            }
+                        } else if (    (tx==1) && (ty==1)
+                                    && (posn_x >=   scan_res) && (posn_x <= np->npts_x-1-scan_res)
+                                    && (posn_y >=   scan_res) && (posn_y <= np->npts_y-1-scan_res) ) {
+                            scan_idx = np->scan_array[posn_x+scan_res][posn_y];
+                            if (    (np->scan_array[posn_x+scan_res][posn_y+scan_res] == scan_idx)
+                                 && (np->scan_array[posn_x         ][posn_y+scan_res] == scan_idx)
+                                 && (np->scan_array[posn_x-scan_res][posn_y+scan_res] == scan_idx)
+                                 && (np->scan_array[posn_x-scan_res][posn_y         ] == scan_idx)
+                                 && (np->scan_array[posn_x-scan_res][posn_y-scan_res] == scan_idx)
+                                 && (np->scan_array[posn_x         ][posn_y-scan_res] == scan_idx)
+                                 && (np->scan_array[posn_x+scan_res][posn_y-scan_res] == scan_idx) ) {
+                                do_scan = 0;
+                            }
+                        }
+                    }
+
+                    if (do_scan) {
+                        (*scan_fn)(np, posn_x, posn_y);
+                    } else {
+                        np->scan_array[posn_x][posn_y] = scan_idx;
+                    }
+
+
+how to gdb
+_____________
+run debug\wisim.exe
+dbg> set args -technology cdma2000 -f cell_21_no_subnet_cdma2000.cgeo
+dbg> run
+
+after crash
+------------------
+dbg> where
+(== dbg> bt == dbg> backtrace)
+dbg> list
+
+
+QColor color = value;
+value = ((R*256)+G)*256+B
+max rgb(255,255,255)=(255*256+255)*256+255=
+int HotColorClass::cal_color_value(int i,int num)
+

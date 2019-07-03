@@ -1,0 +1,32 @@
+read_geometry -f 'sectors_wlan.cgeo'
+switch_mode -mode simulate
+create_coverage_analysis -name level_type_0 -type level
+set_coverage_analysis -name level_type_0 -num_scan_type 10
+set_coverage_analysis -name level_type_0 -cell '0' -dmax 580.000000
+set_coverage_analysis -name level_type_0 -use_gpm 0
+set_coverage_analysis -name level_type_0 -scan_fractional_area 0.9950 -init_sample_res 8
+set_coverage_analysis -name level_type_0 -thr_idx 0 -threshold_db -63.010300
+set_coverage_analysis -name level_type_0 -thr_idx 1 -threshold_db -59.885300
+set_coverage_analysis -name level_type_0 -thr_idx 2 -threshold_db -56.760300
+set_coverage_analysis -name level_type_0 -thr_idx 3 -threshold_db -53.635300
+set_coverage_analysis -name level_type_0 -thr_idx 4 -threshold_db -50.510300
+set_coverage_analysis -name level_type_0 -thr_idx 5 -threshold_db -47.385300
+set_coverage_analysis -name level_type_0 -thr_idx 6 -threshold_db -44.260300
+set_coverage_analysis -name level_type_0 -thr_idx 7 -threshold_db -41.135300
+set_coverage_analysis -name level_type_0 -thr_idx 8 -threshold_db -38.010300
+run_coverage -name level_type_0
+create_coverage_analysis -name level_type_1 -type level
+set_coverage_analysis -name level_type_1 -num_scan_type 10
+set_coverage_analysis -name level_type_1 -use_gpm 1
+set_coverage_analysis -name level_type_1 -scan_fractional_area 0.995000 -init_sample_res 16
+set_coverage_analysis -name level_type_1 -thr_idx 0 -threshold_db -58.010300
+set_coverage_analysis -name level_type_1 -thr_idx 1 -threshold_db -55.510300
+set_coverage_analysis -name level_type_1 -thr_idx 2 -threshold_db -53.010300
+set_coverage_analysis -name level_type_1 -thr_idx 3 -threshold_db -50.510300
+set_coverage_analysis -name level_type_1 -thr_idx 4 -threshold_db -48.010300
+set_coverage_analysis -name level_type_1 -thr_idx 5 -threshold_db -45.510300
+set_coverage_analysis -name level_type_1 -thr_idx 6 -threshold_db -43.010300
+set_coverage_analysis -name level_type_1 -thr_idx 7 -threshold_db -40.510300
+set_coverage_analysis -name level_type_1 -thr_idx 8 -threshold_db -38.010300
+run_coverage -name level_type_1
+
