@@ -1,6 +1,6 @@
 /******************************************************************************************/
 /**** PROGRAM: wlan_monte_carlo.cpp                                                    ****/
-/****   chengan                                                                        ****/
+/****   - chengan douboer@gmail.com                                                    ****/
 /******************************************************************************************/
 #include <string.h>
 #include <iostream>
@@ -112,8 +112,6 @@ double WLANSessionClass::receive_pwr(WLANNetworkClass *wnp, int x, int y)
 
     return rx_pwr_dbm;
 }
-
-
 
 double WLANSessionClass::get_cca()
 {
