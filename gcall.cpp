@@ -16,6 +16,8 @@
 #include "gconst.h"
 #include "traffic_type.h"
 
+#include "phone_icon.xpm"
+
 /******************************************************************************************/
 /**** Static member declarations                                                       ****/
 /******************************************************************************************/
@@ -41,9 +43,9 @@ GCallClass::GCallClass(FigureEditor *editor, int p_master_idx, int p_traffic_typ
     editor->xy_to_canvas(call_x, call_y, call->posn_x, call->posn_y);
     editor->xy_to_canvas(cell_x, cell_y, cell->posn_x, cell->posn_y);
 
-    setSize(GConst::callSize,GConst::callSize);
+    //setSize(GConst::callSize,GConst::callSize);
     move(call_x-width()/2, call_y-height()/2);
-    setZ(9);
+    setZ(9999);
     show();
 
     connection = new CallConnection(editor->canvas(), QPoint(call_x, call_y), QPoint(cell_x, cell_y));
@@ -77,13 +79,16 @@ void GCallClass::setPixmap()
     for (tti=0; tti<=np->num_traffic_type-1; tti++) {
         pixmap[tti] = new QPixmap(GConst::callSize,GConst::callSize);
         pixmap[tti]->fill(QColor(np->traffic_type_list[tti]->get_color()));
-
         QPainter painter(pixmap[tti]);
         painter.setPen(Qt::black);
         painter.setBrush(Qt::NoBrush);
-        painter.drawRect(0, 0, GConst::callSize, GConst::callSize);
+        painter.drawCirle(0, 0, GConst::callSize, GConst::callSize);
+
+        // CG MOD
+        //pixmap[tti] = new QPixmap(phone_icon);
     }
 }
+
 /******************************************************************************************/
 /**** FUNCTION: GCallClass::drawShape                                                  ****/
 /******************************************************************************************/
@@ -108,6 +113,3 @@ void GCallClass::deletePixmap()
     pixmap = (QPixmap **) NULL;
 }
 /******************************************************************************************/
-
-
-

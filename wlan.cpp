@@ -192,6 +192,17 @@ void WLANNetworkClass::set_default_parameters()
 }
 
 /******************************************************************************************/
+/**** FUNCTION: WLANSectorClass::st_comp_arrival_rate                                   ****/
+/**** COPY from PHSSectorClass                                                         ****/
+/******************************************************************************************/
+double WLANSectorClass::st_comp_arrival_rate(int traffic_idx)
+{
+    double arrival_rate = 1;
+
+    return (arrival_rate);
+}
+
+/******************************************************************************************/
 /**** FUNCTION: WLANNetworkClass::process_mode_change                                  ****/
 /******************************************************************************************/
 void WLANNetworkClass::process_mode_change()

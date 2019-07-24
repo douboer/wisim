@@ -6,8 +6,7 @@ class GConst
 public:
 
     enum CanvasSize {
-        // xxxxxx cellSize = 9,
-        callSize = 8
+        callSize = 10
     };
 
     /**************************************************************************************/

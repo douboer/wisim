@@ -113,6 +113,8 @@ double WLANSessionClass::receive_pwr(WLANNetworkClass *wnp, int x, int y)
     return rx_pwr_dbm;
 }
 
+//The energy detect (ED) threshold is used to detect any other type of RF transmissions
+//  during the clear channel assessment (CCA)
 double WLANSessionClass::get_cca()
 {
     return (-85.0-5.0*log(tx_pwr_mw/100.0)/log(10.0));
@@ -206,6 +208,7 @@ void WLANNetworkClass::gen_event(EventClass *event)
     }
 
     // calculate tau_user_inter & p_cond_coll_user_inter before event comming
+    // tau_user_inter => lambda_segment_user() => lambda_segment_net()
     tau_with_inter (1E-10);
 
     /*  time to next exponential event has mean:
@@ -234,7 +237,8 @@ void WLANNetworkClass::gen_event(EventClass *event)
             ap = (WLANSectorClass*) cell->sector_list[ap_idx];
             total_rate += 1/drop_mean_duration_ap( ap, ap_lambda_traffic_type_total, 0 );
 
-            //std::cout << "drop_mean_duration_ap( ap, ap_lambda_traffic_type_total, 0 ) " << drop_mean_duration_ap( ap, ap_lambda_traffic_type_total, 0 ) << std::endl;
+            //std::cout << "drop_mean_duration_ap( ap, ap_lambda_traffic_type_total, 0 ) " 
+            //          << drop_mean_duration_ap( ap, ap_lambda_traffic_type_total, 0 ) << std::endl;
         }
     }
 
@@ -628,7 +632,7 @@ double WLANNetworkClass::drop_mean_duration_ap( WLANSectorClass* ap, double* ap_
     drop_md_ap = 1./total_lambda_ap;
 
 #if MC_DBG
-    std::cout << "Total lambda of an AP : " << total_lambda_ap << std::endl;
+    std::cout << "Total lambda of drop event an AP : " << total_lambda_ap << std::endl;
 #endif
 
     free ( p_drop_list );    p_drop_list    = (double*) NULL;
@@ -1498,6 +1502,8 @@ double WLANNetworkClass::tau_equations_no_inter( int num_user, double& p_cond_co
 {
     // fpcc is an expression of input varable p_cond_coll
     double fpcc = 1;
+
+    //The probability tau[j] of user j transmit in a random slot in APi
     tau = (1-pow(p_cond_coll, max_backoff_stage+limit_retry+1))*2*(1-2*p_cond_coll)
         /(W*(1-pow(2*p_cond_coll, max_backoff_stage+1))*(1-p_cond_coll)
           + (1-2*p_cond_coll)*(1-pow(p_cond_coll, max_backoff_stage+limit_retry+1))
@@ -1644,7 +1650,6 @@ double WLANNetworkClass::tau_with_inter ( double err )
     }
     std::cout << "\n\n\n";
 #endif
-
 
     // free memory
     free (tau_user_no_inter);
@@ -2611,7 +2616,7 @@ void WLANNetworkClass::update_network(EventClass *event)
                 ((WLANStatCountClass *) ap->stat_count)->num_session_request_timeout[traffic_type_idx] ++;
 
 
-#if !MC_DBG
+#if MC_DBG
                 std ::cout << " SESSION REQUEST TIMEOUT" << std::endl;
 #endif
             }
@@ -2905,9 +2910,8 @@ void WLANNetworkClass::update_network(EventClass *event)
         delete_call = false;
     }
 
-
 #if 0
-    // Keeping the values of all ap's throughput in a list, it can save the amount of computation by doing that.
+    // Keeping the values of all ap's throughput in a list, it can save amount of computation by doing that.
     std::vector <double> thr_list;
 #endif
 
@@ -3241,5 +3245,3 @@ double WLANExpoPM::prop_power_loss(NetworkClass *np, WLANSessionClass* user, int
 
     return(prop_gain_db);
 }
-
-

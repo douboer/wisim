@@ -30,3 +30,8 @@ set_coverage_analysis -name level_type_1 -thr_idx 7 -threshold_db -40.510300
 set_coverage_analysis -name level_type_1 -thr_idx 8 -threshold_db -38.010300
 run_coverage -name level_type_1
 
+switch_mode -mode edit_geom
+reseed_rangen -seed 2244344
+switch_mode -mode simulate
+run_simulation -time 30
+

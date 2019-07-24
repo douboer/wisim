@@ -1808,19 +1808,6 @@ void GCellClass::setCellPixmapList()
         selected_pixmap_list[i]->setMask(*GCellClass::selected_bm_list[i]);
     }
     /**************************************************************************************/
-
-#if 0
-xxxxxxxxxxxx
-    QBitmap sel_bm(selected_pixmap->width(), selected_pixmap->height());
-    sel_bm.fill(Qt::color0);
-
-    QPainter sel_painter(&sel_bm);
-    sel_painter.setPen( Qt::color1 );
-    sel_painter.setBrush( Qt::color1 );
-    sel_painter.drawEllipse(0, 0, selected_pixmap->width(), selected_pixmap->height());
-
-    selected_pixmap->setMask(sel_bm);
-#endif
 }
 /******************************************************************************************/
 /**** FUNCTION: GCellClass::getCellPixmap                                              ****/
@@ -1901,95 +1888,6 @@ QString GCellClass::view_label(NetworkClass *np, int cell_name_pref)
     return(s);
 }
 /******************************************************************************************/
-
-#if (0 && HAS_MONTE_CARLO)
-xxxxxxxx Moved to gcall.cpp DELETE
-/******************************************************************************************/
-/**** FUNCTION: GCallClass::GCallClass                                                 ****/
-/******************************************************************************************/
-GCallClass::GCallClass(FigureEditor *editor, int p_master_idx, int p_traffic_type_idx) : Q3CanvasRectangle( editor->canvas() )
-{
-    int cell_idx, call_x, call_y, cell_x, cell_y;
-    CellClass   *cell;
-    CallClass   *call;
-
-    master_idx = p_master_idx;
-    traffic_type_idx = p_traffic_type_idx;
-    call = (CallClass *) (*(np->master_call_list))[master_idx];
-    cell_idx = call->cell_idx;
-    cell = np->cell_list[cell_idx];
-
-    editor->xy_to_canvas(call_x, call_y, call->posn_x, call->posn_y);
-    editor->xy_to_canvas(cell_x, cell_y, cell->posn_x, cell->posn_y);
-
-    setSize(GConst::callSize,GConst::callSize);
-    move(call_x-width()/2, call_y-height()/2);
-    setZ(9);
-    show();
-
-    connection = new CallConnection(editor->canvas(), QPoint(call_x, call_y), QPoint(cell_x, cell_y));
-    connection->setPen( QPen(QColor(100,100,100), 1) );
-    connection->setZ(9);
-    connection->show();
-}
-/******************************************************************************************/
-/**** FUNCTION: GCallClass::~GCallClassCall                                            ****/
-/******************************************************************************************/
-GCallClass::~GCallClass()
-{
-    delete connection;
-}
-/******************************************************************************************/
-/**** FUNCTION: GCallClass::rtti                                                       ****/
-/******************************************************************************************/
-int GCallClass::rtti() const { return GConst::trafficRTTI; }
-/******************************************************************************************/
-/**** FUNCTION: GCallClass::setNetworkStruct                                           ****/
-/******************************************************************************************/
-void GCallClass::setNetworkStruct( NetworkClass *p_np) { np = p_np; };
-/******************************************************************************************/
-/**** FUNCTION: GCallClass::setPixmap                                                  ****/
-/******************************************************************************************/
-void GCallClass::setPixmap()
-{
-    int tti;
-
-    pixmap = (QPixmap **) malloc(np->num_traffic_type*sizeof(QPixmap *));
-    for (tti=0; tti<=np->num_traffic_type-1; tti++) {
-        pixmap[tti] = new QPixmap(GConst::callSize,GConst::callSize);
-        pixmap[tti]->fill(QColor(np->traffic_type_list[tti]->get_color()));
-
-        QPainter painter(pixmap[tti]);
-        painter.setPen(Qt::black);
-        painter.setBrush(Qt::NoBrush);
-        painter.drawRect(0, 0, GConst::callSize, GConst::callSize);
-    }
-}
-/******************************************************************************************/
-/**** FUNCTION: GCallClass::drawShape                                                  ****/
-/******************************************************************************************/
-void GCallClass::drawShape(QPainter &p)
-{
-    p.drawPixmap((int) x(), (int) y(), *(pixmap[traffic_type_idx]));
-}
-/******************************************************************************************/
-/**** FUNCTION: GCallClass::deletePixmap                                               ****/
-/******************************************************************************************/
-void GCallClass::deletePixmap()
-{
-    int tti;
-
-    if (pixmap) {
-        for (tti=0; tti<=np->num_traffic_type-1; tti++) {
-            delete pixmap[tti];
-        }
-        free(pixmap);
-    }
-
-    pixmap = (QPixmap **) NULL;
-}
-/******************************************************************************************/
-#endif
 
 /******************************************************************************************/
 /**** FUNCTION: PixmapItem::drawShape                                                  ****/
@@ -2118,6 +2016,7 @@ void RulerClass::setPt(int idx, int x, int y)
     }
 }
 /******************************************************************************************/
+// CGTBD move to public function class
 inline int cross(const int xx1, const int yy1, const int xx2, const int yy2,
                  const int xx3, const int yy3, const int xx4, const int yy4)
 {
@@ -2188,6 +2087,7 @@ void FigureEditor::drawLinePainter(LineClass *line, QPainter &painter,
                     xy_to_canvas(new_x, new_y, (double) max_x, y[prev_i] + u*(y[curr_i]-y[prev_i]) );
                 }
             } else if (x_out < min_x) {
+
                 found = cross(x[prev_i], y[prev_i], x[curr_i], y[curr_i], min_x, min_y, min_x, max_y);
                 if (found) {
                     u = (double) (min_x - x[prev_i]) / (x[curr_i] - x[prev_i]);
@@ -2967,6 +2867,7 @@ void fix_metric_order(int num_x_pts, int *xpt_metric, int *xpt_idx, QVector<QPoi
 #undef PT_DELETE
 
 /******************************************************************************************/
+// CGTBD move to new class file
 PositionClass::PositionClass()
 {
     pixel_x = 0;

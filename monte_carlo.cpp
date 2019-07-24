@@ -96,7 +96,6 @@ void NetworkClass::run_simulation(int option, int n, double time_duration)
 #endif
         gen_event(event);
         update_stats(event);
-
         update_network(event);
 
         event_num++;

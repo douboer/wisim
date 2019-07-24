@@ -38,6 +38,7 @@ public:
     static const char *info_win_icon_normal[];
     static const char *info_win_icon_disabled[];
     static const char *x_icon[];
+    static const char *phone_icon[];
 };
 
 #endif
