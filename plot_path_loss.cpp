@@ -10,8 +10,8 @@
 
 #include "antenna.h"
 #include "cconst.h"
-#include "WiSim_gui.h"
-#include "WiSim.h"
+#include "wisim_gui.h"
+#include "wisim.h"
 #include "coverage.h"
 #include "datachart.h"
 #include "list.h"

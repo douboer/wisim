@@ -21,7 +21,7 @@
 
 #include "prop_type_name_dia.h"
 #include "prop_model.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "cconst.h"
 
 PropTypeNameDia::PropTypeNameDia( NetworkClass* np_param , QWidget* parent, const char* name, bool modal, Qt::WFlags fl )

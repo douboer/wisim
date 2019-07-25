@@ -12,7 +12,7 @@
 #include <ctype.h>
 
 #include "antenna.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "coverage.h"
 #include "cconst.h"
 #include "hot_color.h"
@@ -325,7 +325,7 @@ void CoverageClass::read_coverage_db(NetworkClass *np)
 */
    sprintf( username, "scott" );
    sprintf( password, "tiger" );
-   sprintf( svcname, "WiSim" );
+   sprintf( svcname, "wisim" );
 
    if( !ReadDB.connectDB( svcname, username, password, errmsg ) ) {
 	PRMSG(stdout, errmsg);

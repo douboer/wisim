@@ -12,8 +12,8 @@
 
 
 #include "cconst.h"
-#include "WiSim_gui.h"
-#include "WiSim.h"
+#include "wisim_gui.h"
+#include "wisim.h"
 #include "clutter_data_analysis.h"
 #include "doubleintint.h"
 #include "icons.h"

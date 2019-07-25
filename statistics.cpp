@@ -7,7 +7,7 @@
 #include "cconst.h"
 #include "statistics.h"
 #include "traffic_type.h"
-#include "WiSim.h"
+#include "wisim.h"
 
 /******************************************************************************************/
 /**** Static member declarations                                                       ****/

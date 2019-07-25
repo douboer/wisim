@@ -1,5 +1,5 @@
 #include "showhandover.h"
-#include "WiSim.h"
+#include "wisim.h"
 
 #include <qvariant.h>
 #include <qlabel.h>

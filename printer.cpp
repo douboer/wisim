@@ -19,7 +19,7 @@
 #include <Q3GridLayout>
 #include <Q3VBoxLayout>
 
-#include "WiSim_gui.h"
+#include "wisim_gui.h"
 #include "printer.h"
 
 void myQCanvasView::drawContents( QPainter *p,int cx, int cy, int cw, int ch )  

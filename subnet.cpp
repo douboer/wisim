@@ -10,7 +10,7 @@
 
 #include "cconst.h"
 #include "list.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "hot_color.h"
 #include "intintint.h"
 #include "posn_scan.h"

@@ -38,7 +38,7 @@
 #include <qcursor.h>
 #include <qaction.h>
 #include <q3dockarea.h>
-#include "WiSim.h"
+#include "wisim.h"
 #include "datachart.h"
 
 #define DEBUG_DATACHART 0

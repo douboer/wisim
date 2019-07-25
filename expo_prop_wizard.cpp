@@ -26,7 +26,7 @@
 #include <Q3HBoxLayout>
 
 #include "expo_prop_wizard.h"
-#include "WiSim.h"
+#include "wisim.h"
 
 ExpoPropWizard::ExpoPropWizard( NetworkClass* np_param, QWidget* parent, const char* name, bool modal, Qt::WFlags fl )
     : Q3Wizard( parent, name, modal, fl ), np( np_param )

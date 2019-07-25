@@ -12,7 +12,7 @@
 #include "generalparam.h"
 #include "wlan_generalparam.h"
 
-#include "WiSim.h"
+#include "wisim.h"
 #include "wlan.h"
 #include "cconst.h"
 

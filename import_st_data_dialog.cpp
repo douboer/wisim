@@ -18,7 +18,7 @@
 #include <Q3GridLayout>
 #include <Q3CString>
 
-#include "WiSim.h"
+#include "wisim.h"
 #include "cconst.h"
 #include "filechooser.h"
 

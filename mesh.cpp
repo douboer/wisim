@@ -8,7 +8,7 @@
 
 #include "mesh.h"
 #include "intint.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "list.h"
 #include "polygon.h"
 #include "cconst.h"

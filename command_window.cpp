@@ -21,7 +21,7 @@
 
 #include "gconst.h"
 #include "icons.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "command_window.h"
 #include "set_language.h"
 
@@ -102,7 +102,7 @@ CommandWindow::CommandWindow(NetworkClass *np_param, QWidget* parent, const char
 
     setGeometry(200, 600, 800, 300);
 
-    fl = fopen("WiSim_cmdwin.log", "w");
+    fl = fopen("wisim_cmdwin.log", "w");
 
     hide();
 }

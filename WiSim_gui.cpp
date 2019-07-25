@@ -1,8 +1,8 @@
 /******************************************************************************************/
-/**** PROGRAM: WiSim_gui.cpp                                                         ****/
+/**** PROGRAM: wisim_gui.cpp                                                         ****/
 /**** Michael Mandell 2/19/03                                                          ****/
 /******************************************************************************************/
-/**** C++ GUI for WiSim using qt                                                     ****/
+/**** C++ GUI for wisim using qt                                                     ****/
 /******************************************************************************************/
 
 #include <string.h>
@@ -34,7 +34,7 @@
 #include <Q3MemArray>
 
 #include "cconst.h"
-#include "WiSim_gui.h"
+#include "wisim_gui.h"
 #include "coverage.h"
 #include "draw_polygon_dialog.h"
 #include "gcall.h"

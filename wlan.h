@@ -9,7 +9,7 @@
 #include  <math.h>
 #include  <vector>
 
-#include "WiSim.h"
+#include "wisim.h"
 #include "traffic_type.h"
 #include "prop_model.h"
 
@@ -107,7 +107,7 @@ public:
     /**** Virtual Functions                                                            ****/
     /**************************************************************************************/
     const int technology();
-    // void read_geometry_db(char *WiSim_home);
+    // void read_geometry_db(char *wisim_home);
     void print_geometry(char *filename);
     // void print_geometry_db();
     void process_mode_change();

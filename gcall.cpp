@@ -9,8 +9,8 @@
 //Added by qt3to4:
 #include <QPixmap>
 
-#include "WiSim.h"
-#include "WiSim_gui.h"
+#include "wisim.h"
+#include "wisim_gui.h"
 #include "gcall.h"
 #include "list.h"
 #include "gconst.h"

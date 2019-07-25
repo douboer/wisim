@@ -12,7 +12,7 @@
 //Added by qt3to4:
 #include <Q3GridLayout>
 #include <QLabel>
-#include "WiSim.h"
+#include "wisim.h"
 
 class NetworkClass;
 class QRadioButton;

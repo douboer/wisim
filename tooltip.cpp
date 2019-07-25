@@ -7,8 +7,8 @@
 
 #include <stdlib.h>
 
-#include "WiSim_gui.h"
-#include "WiSim.h"
+#include "wisim_gui.h"
+#include "wisim.h"
 #include "doubleintint.h"
 #include "list.h"
 #include "main_window.h"

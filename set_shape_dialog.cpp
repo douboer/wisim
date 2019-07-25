@@ -38,8 +38,8 @@
 #include <Q3VBoxLayout>
 #include <QDragEnterEvent>
 
-#include "WiSim.h"
-#include "WiSim_gui.h"
+#include "wisim.h"
+#include "wisim_gui.h"
 #include "set_shape_dialog.h"
 #include "list.h"
 

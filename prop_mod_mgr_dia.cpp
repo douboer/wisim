@@ -29,8 +29,8 @@
 #include <Q3VBoxLayout>
 
 #include "cconst.h"
-#include "WiSim.h"
-#include "WiSim_gui.h"
+#include "wisim.h"
+#include "wisim_gui.h"
 #include "clutter_data_analysis.h"
 #include "expo_prop_wizard.h"
 #include "gconst.h"

@@ -28,7 +28,7 @@
 #include <stdlib.h>
 
 #include "license.h"
-#include "WiSim.h"
+#include "wisim.h"
 
 #ifndef __linux__
 int sendRegInfo(char *reg_file_rel, char *reg_file_full, char *subject, char *value);

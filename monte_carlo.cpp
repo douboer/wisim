@@ -6,7 +6,7 @@
 #include <time.h>
 
 #include "cconst.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "list.h"
 #include "polygon.h"
 #include "randomc.h"

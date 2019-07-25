@@ -1,5 +1,5 @@
 #include "cvg_analysis_wizard.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "pref.h"
 
 #include <qvariant.h>

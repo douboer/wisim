@@ -19,7 +19,7 @@
 //Added by qt3to4:
 #include <Q3HBoxLayout>
 #include <Q3VBoxLayout>
-#include "WiSim.h"
+#include "wisim.h"
 
 //*****************************************************************************
 //CLASS: RunSimulation class

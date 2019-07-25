@@ -21,7 +21,7 @@
 #include "coverage.h"
 #include "pref.h"
 #include "list.h"
-#include "WiSim.h"
+#include "wisim.h"
 
 #define PRECISION  0.00001 
 

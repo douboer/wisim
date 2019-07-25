@@ -6,7 +6,7 @@
 #include <string.h>
 
 #include "cconst.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "match_data.h"
 #include "phs.h"
 #include "statistics.h"

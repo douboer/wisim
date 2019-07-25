@@ -29,8 +29,8 @@
 
 #include "gconst.h"
 #include "cconst.h"
-#include "WiSim.h"
-#include "WiSim_gui.h"
+#include "wisim.h"
+#include "wisim_gui.h"
 #include "list.h"
 
 #include <q3valuelist.h>

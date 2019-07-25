@@ -21,8 +21,8 @@
 #include <Q3VBoxLayout>
 
 #include "cconst.h"
-#include "WiSim.h"
-#include "WiSim_gui.h"
+#include "wisim.h"
+#include "wisim_gui.h"
 #include "list.h"
 #include "main_window.h"
 #include "pref.h"

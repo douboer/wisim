@@ -10,7 +10,7 @@
 #include "cvg_maindia.h"
 #include "cvg_info_level_wid.h"
 
-#include "WiSim.h"
+#include "wisim.h"
 
 CvgLayerPage::CvgLayerPage( NetworkClass* np_param, CvgAnaDia* v_cvg_dia )
     : np( np_param )

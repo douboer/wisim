@@ -38,7 +38,7 @@
 #include "binint.h"
 #include "bin_io.h"
 #include "cdma2000.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "clutter_data_analysis.h"
 #include "cconst.h"
 #include "coverage.h"
@@ -75,7 +75,7 @@
 #include <q3header.h>
 #include <qcursor.h>
 
-#include "WiSim_gui.h"
+#include "wisim_gui.h"
 #include "gcall.h"
 #include "logo_display.h"
 #include "main_window.h"
@@ -127,7 +127,7 @@ void set_lic_n(int lic_n, unsigned char *reg_info);
 void gaussian(TRandomMersenne *rg, double &g1, double &g2);
 
 #if HAS_GUI
-int install_license_file(char *install_file, char *WiSim_home, unsigned char *reg_info, int ris);
+int install_license_file(char *install_file, char *wisim_home, unsigned char *reg_info, int ris);
 #endif
 void make_reg_data(unsigned char *reg_info, int ris, char *str);
 
@@ -141,13 +141,13 @@ void write_registration_table(char *path, char *varname, char *value);
 
 int get_net_date(int &year, int &month, int &day);
 
-char *WiSim_home = (char *) NULL;
+char *wisim_home = (char *) NULL;
 char *usb_sn = (char *) NULL;
 char *initfile = (char *) NULL;
 char *geomfile = (char *) NULL;
 char *logfile  = (char *) NULL;
 int technology = CConst::PHS;
-char *WiSim_pref_file = (char *) NULL;
+char *wisim_pref_file = (char *) NULL;
 
 #include "license.h"
 #include "scramble.h"
@@ -469,31 +469,31 @@ int main( int argc, char ** argv )
 #endif
 
     if (!logfile) {
-        logfile = strdup("WiSim.log");
+        logfile = strdup("wisim.log");
     }
 
     QString homestr = get_environment_variable("WISIM_HOME");
 	if ( homestr.isEmpty() || homestr.isNull() )
 	{
-        QMessageBox::critical(0, QObject::tr("Start WiSim"),
+        QMessageBox::critical(0, QObject::tr("Start wisim"),
              QObject::tr("WISIM_HOME variable not setting! Reinstall the application."));
 
         return -1;
 	}
-    WiSim_home = CVECTOR(strlen(homestr.toAscii().data()));
-    sprintf(WiSim_home, "%s", homestr.toAscii().data());
+    wisim_home = CVECTOR(strlen(homestr.toAscii().data()));
+    sprintf(wisim_home, "%s", homestr.toAscii().data());
 
-    if (WiSim_home) {
-        if (strlen(WiSim_home)) {
-            if (    (WiSim_home[strlen(WiSim_home)-1] == '/' )
-                 || (WiSim_home[strlen(WiSim_home)-1] == '\\') ) {
-                 WiSim_home[strlen(WiSim_home)-1] = (char) NULL;
+    if (wisim_home) {
+        if (strlen(wisim_home)) {
+            if (    (wisim_home[strlen(wisim_home)-1] == '/' )
+                 || (wisim_home[strlen(wisim_home)-1] == '\\') ) {
+                 wisim_home[strlen(wisim_home)-1] = (char) NULL;
             }
         }
 
-        WiSim_pref_file = CVECTOR( strlen(WiSim_home) + strlen("/WiSim_pref_.txt") + strlen(TECHNOLOGY_NAME(technology)));
-        sprintf(WiSim_pref_file, "%s%c%s%s%s",
-            WiSim_home, FPATH_SEPARATOR, "WiSim_pref_", TECHNOLOGY_NAME(technology), ".txt");
+        wisim_pref_file = CVECTOR( strlen(wisim_home) + strlen("/wisim_pref_.txt") + strlen(TECHNOLOGY_NAME(technology)));
+        sprintf(wisim_pref_file, "%s%c%s%s%s",
+            wisim_home, FPATH_SEPARATOR, "wisim_pref_", TECHNOLOGY_NAME(technology), ".txt");
     } else {
         proper_installation = 0;
     }
@@ -528,7 +528,7 @@ int main( int argc, char ** argv )
     free(logfile);
 
     if (proper_installation) {
-        np->preferences->readFile(WiSim_pref_file);
+        np->preferences->readFile(wisim_pref_file);
     }
 
     GUI_FN(VisibilityWindow    :: setNetworkStruct(np));
@@ -550,9 +550,9 @@ int main( int argc, char ** argv )
         if (np->preferences->language == CConst::zh) {
             QTranslator *translator = new QTranslator(0);
 #if TR_EMBED
-            translator->load( WiSim_zh_qm_data, WiSim_zh_qm_len );
+            translator->load( wisim_zh_qm_data, wisim_zh_qm_len );
 #else
-            translator->load( QString( "WiSim_zh.qm" ), "." );
+            translator->load( QString( "wisim_zh.qm" ), "." );
 #endif
             app->installTranslator( translator );
 #   ifdef __linux__
@@ -587,7 +587,7 @@ int main( int argc, char ** argv )
 
             s = "<h3>WiSIM</h3>";
             s += "<ul>";
-            s +=    "<li> " + qApp->translate("QMessageBox", "WiSim Version: ") + WISIM_RELEASE;
+            s +=    "<li> " + qApp->translate("QMessageBox", "wisim Version: ") + WISIM_RELEASE;
             s +=    "<li> " + qApp->translate("QMessageBox", "ERROR: WiSIM has not been properly installed");
             s += "</ul>";
 
@@ -723,8 +723,8 @@ int main( int argc, char ** argv )
     printf("TIMESTAMP: %s\n", ctime(&td));
 #endif
 
-    if (WiSim_home) { free(WiSim_home); }
-    free(WiSim_pref_file);
+    if (wisim_home) { free(wisim_home); }
+    free(wisim_pref_file);
 
     return(0);
 }
@@ -735,7 +735,7 @@ int get_next_command(FILE *input_stream, char *line)
 
 #if 0
     if (input_stream == stdin) {
-        printf("\nWiSim> ");
+        printf("\nwisim> ");
         fflush(stdout);
     }
 #endif
@@ -979,7 +979,7 @@ int NetworkClass::process_command(char *line)
             require_param(command, "f", cmd_optlist[0]);
 
             if (!error_state) {
-                read_geometry(cmd_optlist[0], WiSim_home, cmd_optlist[1]);
+                read_geometry(cmd_optlist[0], wisim_home, cmd_optlist[1]);
                 if (error_state) {
                     close_geometry();
                 }
@@ -1063,7 +1063,7 @@ int NetworkClass::process_command(char *line)
         } else if (strcmp(command, "read_geometry_db") == 0) {
             check_valid_mode(command, n_mode_valid);
             if (!error_state) {
-                read_geometry_db(WiSim_home);
+                read_geometry_db(wisim_home);
             }
             if (!error_state) {
                 mode = CConst::editGeomMode;
@@ -5872,7 +5872,7 @@ int NetworkClass::process_command(char *line)
             strcpy(prompt, "ERROR> ");
             GUI_FN(main_window->toggle_command_window(GConst::visShow));
         } else {
-            strcpy(prompt, "WiSim> ");
+            strcpy(prompt, "wisim> ");
         }
 
         if (warning_state) {
@@ -6126,7 +6126,7 @@ void gaussian(TRandomMersenne *rg, double &g1, double &g2)
 /**** FUNCTION: install_license_file                                                   ****/
 /**** INPUTS:                                                                          ****/
 /**** OUTPUTS: Returns 0 on success, 1 on error                                        ****/
-int install_license_file(char *install_file, char *WiSim_home, unsigned char *reg_info, int ris)
+int install_license_file(char *install_file, char *wisim_home, unsigned char *reg_info, int ris)
 {
     QString s, errmsg = "";
     QMessageBox* msg_box;
@@ -6163,8 +6163,8 @@ int install_license_file(char *install_file, char *WiSim_home, unsigned char *re
     }
 
     if (!error) {
-        license_file = CVECTOR( strlen(WiSim_home) + strlen("/license.dat") );
-        sprintf(license_file, "%s%c%s", WiSim_home, FPATH_SEPARATOR, "license.dat");
+        license_file = CVECTOR( strlen(wisim_home) + strlen("/license.dat") );
+        sprintf(license_file, "%s%c%s", wisim_home, FPATH_SEPARATOR, "license.dat");
         if ( !(file_w = fopen(license_file, "wb")) ) {
             errmsg += qApp->translate("QMessageBox", "Cannot write to file:") + " " + QString::fromLocal8Bit(license_file);
             error = 1;
@@ -6787,19 +6787,19 @@ int get_net_date(int &year, int &month, int &day)
 
     int cont = 1;
 #ifdef __linux__
-    char *date_file = CVECTOR(strlen(WiSim_home) + 2 + strlen("IE6.log"));
-    sprintf(date_file, "%s%cIE6.log", WiSim_home, FPATH_SEPARATOR);
-    char *exefile = CVECTOR(strlen(WiSim_home) + 2 + strlen("mdi.pl"));
-    sprintf(exefile, "%s%cmdi.pl", WiSim_home, FPATH_SEPARATOR);
+    char *date_file = CVECTOR(strlen(wisim_home) + 2 + strlen("IE6.log"));
+    sprintf(date_file, "%s%cIE6.log", wisim_home, FPATH_SEPARATOR);
+    char *exefile = CVECTOR(strlen(wisim_home) + 2 + strlen("mdi.pl"));
+    sprintf(exefile, "%s%cmdi.pl", wisim_home, FPATH_SEPARATOR);
 #else
     char *date_file = strdup("C:\\IE6.log");
-    char *exefile = CVECTOR(strlen(WiSim_home) + 2 + strlen("cs.dat"));
-    sprintf(exefile, "%s%ccs.dat", WiSim_home, FPATH_SEPARATOR);
+    char *exefile = CVECTOR(strlen(wisim_home) + 2 + strlen("cs.dat"));
+    sprintf(exefile, "%s%ccs.dat", wisim_home, FPATH_SEPARATOR);
 #endif
 
 #if GENLOG
-    char *logfile = CVECTOR(strlen(WiSim_home) + 2 + strlen("debug.log"));
-    sprintf(logfile, "%s%cdebug.log", WiSim_home, FPATH_SEPARATOR);
+    char *logfile = CVECTOR(strlen(wisim_home) + 2 + strlen("debug.log"));
+    sprintf(logfile, "%s%cdebug.log", wisim_home, FPATH_SEPARATOR);
 #endif
 
     unsigned long uval;

@@ -14,7 +14,7 @@
 #include <Q3HBoxLayout>
 
 #include "cconst.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "coverage.h"
 #include "cvg_type_name_dia.h"
 

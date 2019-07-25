@@ -3,7 +3,7 @@
 /**** Chengan 4/01/05                                                                  ****/
 /******************************************************************************************/
 
-#include "WiSim_gui.h"
+#include "wisim_gui.h"
 #include "create_subnet_dia.h"
 #include "subnet_traffic_dia.h"
 #include "report_dia.h"

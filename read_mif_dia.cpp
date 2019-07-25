@@ -4,7 +4,7 @@
 /**** Chengan 4/01/05                                                                  ****/
 /******************************************************************************************/
 
-#include "WiSim.h"
+#include "wisim.h"
 #include "hot_color.h"
 #include "list.h"
 #include "map_layer.h"

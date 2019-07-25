@@ -13,8 +13,8 @@
 #include <QMouseEvent>
 #include <QHideEvent>
 
-#include "WiSim.h"
-#include "WiSim_gui.h"
+#include "wisim.h"
+#include "wisim_gui.h"
 
 class QPushButton;
 class VisibilityList;

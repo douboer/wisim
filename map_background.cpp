@@ -14,7 +14,7 @@
 
 #include "antenna.h"
 #include "cconst.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "map_background.h"
 #include "map_layer.h"
 #include "polygon.h"

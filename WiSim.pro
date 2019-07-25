@@ -1,5 +1,5 @@
 ######################################################################
-# FILE: WiSim.pro
+# FILE: wisim.pro
 ######################################################################
 
 isEmpty( HAS_GUI ) {
@@ -37,10 +37,10 @@ TEMPLATE = app
 QT += qt3support
 
 contains(HAS_GUI, 1) {
-    TARGET = WiSim
+    TARGET = wisim
 }
 contains(HAS_GUI, 0) {
-    TARGET = WiSim_no_gui
+    TARGET = wisim_no_gui
 }
 
 CORE_HEADERS = antenna.h                     \
@@ -49,7 +49,7 @@ CORE_HEADERS = antenna.h                     \
                cconst.h                      \
                charstr.h                     \
                cdma2000.h                    \
-               WiSim.h                     \
+               wisim.h                     \
                clutter_data_analysis.h       \
                coverage.h                    \
                doubleintint.h                \
@@ -89,7 +89,7 @@ CORE_SOURCES = antenna.cpp                   \
                charstr.cpp                   \
                phs_cch_sync.cpp              \
                cdma2000.cpp                  \
-               WiSim.cpp                   \
+               wisim.cpp                   \
                check_road_test_data.cpp      \
                check_file.cpp                \
                clutter_data_analysis.cpp     \
@@ -174,7 +174,7 @@ contains(HAS_GUI, 1) {
 
 GUI_HEADERS =  category_page_set.h           \
                category_wid.h                \
-               WiSim_gui.h                 \
+               wisim_gui.h                 \
                clutter_sim_dia.h             \
                command_window.h              \
                convert_road_test_data_dialog.h \
@@ -260,7 +260,7 @@ GUI_SOURCES =  addpolygon.cpp                \
                category_page_set.cpp         \
                category_wid.cpp              \
                cell_bitmap.cpp               \
-               WiSim_gui.cpp               \
+               wisim_gui.cpp               \
                clutter_sim_dia.cpp           \
                command_window.cpp            \
                convert_road_test_data_dialog.cpp \
@@ -369,7 +369,7 @@ debug {
 }
 CONFIG += qt warn_on debug 
 
-RC_FILE = WiSim.rc
+RC_FILE = wisim.rc
 # DEFINES += WISIM_RELEASE=\"081029\"
 DEFINES += HAS_GUI=$${HAS_GUI}
 DEFINES += HAS_ORACLE=$${HAS_ORACLE}
@@ -414,4 +414,4 @@ win32 {
     #INCLUDEPATH += "C:\\Program Files\\Microsoft Visual Studio 10.0\\VC\\include"
 }
 
-TRANSLATIONS = WiSim_zh.ts
+TRANSLATIONS = wisim_zh.ts

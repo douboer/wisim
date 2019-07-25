@@ -6,7 +6,7 @@
 #include <qdialog.h>
 #include <q3table.h>
 #include <vector>
-#include "WiSim.h"
+#include "wisim.h"
 
 using namespace std;
 

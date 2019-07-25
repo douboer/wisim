@@ -3,7 +3,7 @@
 ****************************************************************************/
 #include <q3listview.h>
 
-#include "WiSim_gui.h"
+#include "wisim_gui.h"
 #include "mlistviewitem.h"
 
 mListViewItem::mListViewItem(Q3ListView *parent)

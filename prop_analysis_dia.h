@@ -23,7 +23,7 @@
 #include <Q3VBoxLayout>
 #include <vector>
 
-#include "WiSim.h"
+#include "wisim.h"
 
 class QLabel;
 class QSpinBox;

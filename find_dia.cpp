@@ -18,9 +18,9 @@
 #include <iostream>
 
 #include "gconst.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "phs.h"
-#include "WiSim_gui.h"
+#include "wisim_gui.h"
 #include "find_dia.h"
 #include "list.h"
 

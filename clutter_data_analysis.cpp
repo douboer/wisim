@@ -13,7 +13,7 @@
 #include "bin_io.h"
 #include "cconst.h"
 #include "time.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "clutter_data_analysis.h"
 #include "doubleintint.h"
 #include "intint.h"

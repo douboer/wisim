@@ -12,7 +12,7 @@
 #include <ctype.h>
 
 #include "antenna.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "coverage.h"
 #include "cconst.h"
 #include "hot_color.h"

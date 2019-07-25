@@ -23,8 +23,8 @@
 #include <Q3VBoxLayout>
 
 #include "cconst.h"
-#include "WiSim.h"
-#include "WiSim_gui.h"
+#include "wisim.h"
+#include "wisim_gui.h"
 #include "coverage.h"
 #include "cvg_analysis_wizard.h"
 #include "cvg_level_wizard.h"

@@ -4,7 +4,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "WiSim.h"
+#include "wisim.h"
 #include "spline.h"
 
 /******************************************************************************************/

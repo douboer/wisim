@@ -8,7 +8,7 @@
 #include "antenna.h"
 #include "charstr.h"
 #include "cconst.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "clutter_data_analysis.h"
 #include "intint.h"
 #include "list.h"

@@ -4,8 +4,8 @@
 /******************************************************************************************/
 
 #include "cconst.h"
-#include "WiSim.h"
-#include "WiSim_gui.h"
+#include "wisim.h"
+#include "wisim_gui.h"
 
 #include <qbitmap.h>
 #include <qimage.h>

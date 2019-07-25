@@ -14,7 +14,7 @@
 #include <Q3GridLayout>
 
 #include "cconst.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "prop_model.h"
 #include "prop_mod_widget.h"
 

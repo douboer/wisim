@@ -4,7 +4,7 @@
 
 // #include <qgb18030codec.h>
 #include <q3textedit.h>
-#include "WiSim.h"
+#include "wisim.h"
 #include "main_window.h"
 #include "command_window.h"
 

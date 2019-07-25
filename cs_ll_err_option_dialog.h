@@ -15,7 +15,7 @@
 #include <q3vbox.h>
 #include <qradiobutton.h>
 
-#include "WiSim.h"
+#include "wisim.h"
 
 class CsLonlatErrorOptionDialog : public Q3Wizard
 {

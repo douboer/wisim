@@ -21,9 +21,9 @@
 #include <Q3CString>
 #include <Q3VBoxLayout>
 
-#include "WiSim.h"
+#include "wisim.h"
 #include "phs.h"
-#include "WiSim_gui.h"
+#include "wisim_gui.h"
 #include "draw_polygon_dialog.h"
 #include "gconst.h"
 #include "main_window.h"
@@ -35,7 +35,7 @@
 #include <process.h>
 #endif	
 
-extern char *WiSim_home;
+extern char *wisim_home;
 extern MainWindowClass *main_window;
 
 /******************************************************************************************/
@@ -177,7 +177,7 @@ void DrawPolygonDialog::done_drawing(Q3CanvasPolygon* polygon)
                 chptr += sprintf(chptr, "select_sectors_polygon -f '%s%csector_list.txt' "
                                     "-ext_f '%s%cextended_sector_list.txt' "
                                     "-ext_bdy_f '%s%cextended_bdy.txt' -gptlist '",
-                             WiSim_home, FPATH_SEPARATOR, WiSim_home, FPATH_SEPARATOR, WiSim_home, FPATH_SEPARATOR);
+                             wisim_home, FPATH_SEPARATOR, wisim_home, FPATH_SEPARATOR, wisim_home, FPATH_SEPARATOR);
                 break;
             default:
                 CORE_DUMP;

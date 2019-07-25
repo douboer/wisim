@@ -20,7 +20,7 @@
 #include <Q3VBoxLayout>
 #include <Q3GridLayout>
 
-#include "WiSim.h"
+#include "wisim.h"
 
 class ReadMIFDia : public QDialog
 {

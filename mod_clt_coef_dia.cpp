@@ -9,7 +9,7 @@
 ****************************************************************************/
 
 #include "mod_clt_coef_dia.h"
-#include "WiSim.h"
+#include "wisim.h"
 
 #include <qvariant.h>
 #include <qpushbutton.h>

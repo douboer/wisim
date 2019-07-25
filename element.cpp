@@ -11,13 +11,13 @@
 #include <qfile.h>
 //Added by qt3to4:
 #include <Q3TextStream>
-#include "WiSim.h"
+#include "wisim.h"
 #include "element.h"
 
-extern char *WiSim_home;
+extern char *wisim_home;
 
 Element::Element() {
-  sHelpFileName = QString(WiSim_home) + QString(QChar(FPATH_SEPARATOR)) + "file_type_help.htm";
+  sHelpFileName = QString(wisim_home) + QString(QChar(FPATH_SEPARATOR)) + "file_type_help.htm";
 }
 
 Element::~Element() {
@@ -95,8 +95,8 @@ void Element::writeToFile() {
   // ----------modified on Nov 29, 2004 ------------------
   // changed to use CVECTOR() to adapt to no-GUI, no QT support
   char *txtfile;
-  txtfile = CVECTOR(strlen(WiSim_home) + 1 + strlen("rtd_input.txt"));
-  sprintf(txtfile, "%s%crtd_input.txt", WiSim_home, FPATH_SEPARATOR); 
+  txtfile = CVECTOR(strlen(wisim_home) + 1 + strlen("rtd_input.txt"));
+  sprintf(txtfile, "%s%crtd_input.txt", wisim_home, FPATH_SEPARATOR); 
   QFile file(txtfile);
   // -----------------------------------------------------
 

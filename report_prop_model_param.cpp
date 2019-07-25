@@ -5,7 +5,7 @@
 #include <math.h>
 #include <qstring.h>
 
-#include "WiSim.h"
+#include "wisim.h"
 #include "prop_model.h"
 #include "doubleintint.h"
 #include "list.h"

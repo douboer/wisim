@@ -18,7 +18,7 @@
 #include <Q3GridLayout>
 #include <Q3Frame>
 
-#include "WiSim.h"
+#include "wisim.h"
 #include "create_subnet_dia.h"
 #include "list.h"
 #include "map_layer.h"

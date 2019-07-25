@@ -15,7 +15,7 @@
 #include "antenna.h"
 #include "bin_io.h"
 #include "cconst.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "hot_color.h"
 #include "intint.h"
 #include "list.h"

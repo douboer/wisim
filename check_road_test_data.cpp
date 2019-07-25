@@ -6,7 +6,7 @@
 #include <vector>
 
 #include "road_test_data.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "list.h"
 #include "pref.h"
 #include "phs.h"

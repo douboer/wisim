@@ -16,7 +16,7 @@
 #include <Q3VBoxLayout>
 
 #include "info_wid.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "prop_model.h"
 #include "clutter_data_analysis.h"
 

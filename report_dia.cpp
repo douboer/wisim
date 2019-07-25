@@ -22,7 +22,7 @@
 #include <Q3GridLayout>
 
 #include "cconst.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "coverage.h"
 #include "filechooser.h"
 #include "gconst.h"

@@ -21,7 +21,7 @@
 #include <fstream>
 #include <iomanip>
 
-#include "WiSim.h"
+#include "wisim.h"
 #include "cconst.h"
 #include "intint.h"
 #include "list.h"
@@ -37,7 +37,7 @@ enum SimScope {
     Individual
 };
 
-extern char *WiSim_home;
+extern char *wisim_home;
 
 static SimScope scope = Global;
 
@@ -102,13 +102,13 @@ void NetworkClass::gen_clutter( ListClass<int> *scan_index_list, int useheight, 
     sprintf( ostr, "clutter_coeff_%d.txt", idx ); 
 
 #if 0
-    printf("WISIM HOME: %s\n", WiSim_home);
+    printf("WISIM HOME: %s\n", wisim_home);
     printf("PWR OFFSET: %12.10f\n", preferences->pwr_offset);
 #endif
 
 #if CLUTTER_DEBUG
     //Open log file to write into.
-    sprintf( fn_str, "%s%cclt_sim_result.txt", WiSim_home, FPATH_SEPARATOR );
+    sprintf( fn_str, "%s%cclt_sim_result.txt", wisim_home, FPATH_SEPARATOR );
     clutter_sim_result.open( fn_str );
     if( !clutter_sim_result ) {
         sprintf( msg, "File \"%s\" not exist.\n", fn_str );
@@ -116,7 +116,7 @@ void NetworkClass::gen_clutter( ListClass<int> *scan_index_list, int useheight, 
         error_state = 1;
     }
 
-    sprintf( fn_str, "%s%c%s", WiSim_home, FPATH_SEPARATOR, ostr );
+    sprintf( fn_str, "%s%c%s", wisim_home, FPATH_SEPARATOR, ostr );
     clutter_coeff.open( fn_str );
     if( !clutter_coeff ) {
         sprintf( msg, "File \"%s\" not exist.\n", fn_str );
@@ -126,7 +126,7 @@ void NetworkClass::gen_clutter( ListClass<int> *scan_index_list, int useheight, 
 #endif
 
     //Statistics the distance and the recieve power (and angle) of road test points of a cell
-    sprintf( fn_str, "%s%cdist_power.txt", WiSim_home, FPATH_SEPARATOR );
+    sprintf( fn_str, "%s%cdist_power.txt", wisim_home, FPATH_SEPARATOR );
 #if CLUTTER_DEBUG
     stat_dis_pow.open( fn_str );
     if( !stat_dis_pow) {
@@ -136,7 +136,7 @@ void NetworkClass::gen_clutter( ListClass<int> *scan_index_list, int useheight, 
     }
 
     //Save the value of matrix mmx_a. 
-    sprintf( fn_str, "%s%ctest_matrix.txt", WiSim_home, FPATH_SEPARATOR );
+    sprintf( fn_str, "%s%ctest_matrix.txt", wisim_home, FPATH_SEPARATOR );
     matrix_test.open( fn_str );
     if( !matrix_test) {
         sprintf( msg, "File \"%s\" not exist.\n", fn_str );
@@ -144,7 +144,7 @@ void NetworkClass::gen_clutter( ListClass<int> *scan_index_list, int useheight, 
         error_state = 1;
     }
 
-    sprintf( fn_str, "%s%ctest_aposn.txt", WiSim_home, FPATH_SEPARATOR );
+    sprintf( fn_str, "%s%ctest_aposn.txt", wisim_home, FPATH_SEPARATOR );
     a_posn_test.open( fn_str );
     if( !a_posn_test ) {
         sprintf( msg, "File \"%s\" not exist.\n", fn_str );
@@ -156,7 +156,7 @@ void NetworkClass::gen_clutter( ListClass<int> *scan_index_list, int useheight, 
     /*
        This section is writed for debug on linux operating system. 
        We can input parameters from shell.
-       Now these parameters specify by WiSim process command.
+       Now these parameters specify by wisim process command.
        So, the section code will delete in the future.
      */
     int   scan_idx          = 0;
@@ -453,7 +453,7 @@ void NetworkClass::gen_clutter( ListClass<int> *scan_index_list, int useheight, 
 #if 0
         char fn_str[100];
         std::ofstream dbg_clt_reg;
-        sprintf( fn_str, "%s%cdbg_clt_reg.txt", WiSim_home, FPATH_SEPARATOR );
+        sprintf( fn_str, "%s%cdbg_clt_reg.txt", wisim_home, FPATH_SEPARATOR );
         dbg_clt_reg.open( fn_str );
         if( !dbg_clt_reg)
             printf( "File \"%s\" not exist.\n", fn_str );

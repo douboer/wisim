@@ -5,7 +5,7 @@
 
 #include <string.h>
 #include "cconst.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "traffic_type.h"
 
 /******************************************************************************************/

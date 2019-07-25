@@ -6,7 +6,7 @@
 #ifndef CDMA2000_H
 #define CDMA2000_H
 
-#include "WiSim.h"
+#include "wisim.h"
 #include "traffic_type.h"
 
 class CDMA2000NetworkClass;
@@ -90,7 +90,7 @@ public:
     const int technology();
     // void update_network(EventClass *);
     // void reset_base_stations(int option);
-    // void read_geometry_db(char *WiSim_home);
+    // void read_geometry_db(char *wisim_home);
     void print_geometry(char *filename);
     // void print_geometry_db();
     void process_mode_change();

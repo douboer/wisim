@@ -9,7 +9,7 @@
 #include "cconst.h"
 #include "sectorparamPage.h"
 #include "phs.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "antenna.h"
 #include "unusedfreq.h"
 #include "prop_model.h"

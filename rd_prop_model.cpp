@@ -7,7 +7,7 @@
 #include <time.h>
 
 #include "cconst.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "rd_prop_model.h"
 
 /*

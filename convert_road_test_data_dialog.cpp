@@ -12,7 +12,7 @@
 
 
 #include "cconst.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "convert_road_test_data_dialog.h"
 #include "helpdialog.h"
 
@@ -62,7 +62,7 @@
 
 #define CGDEBUG 0
 
-extern char *WiSim_home;
+extern char *wisim_home;
 
 ConvertRoadTestDataDialog::ConvertRoadTestDataDialog(QWidget* parent, const char* name, \
                            bool modal,  Qt::WFlags f) 
@@ -378,14 +378,14 @@ void ConvertRoadTestDataDialog::runPerl() {
     // Modified on Nov. 29, 2004.
     // changed to use CVECTOR() to adapt to no-GUI, no QT support --------
     char *exefile;
-    exefile = CVECTOR(strlen(WiSim_home) + 1 + strlen("convert_rtd.pl"));
-    sprintf(exefile, "%s%cconvert_rtd.pl", WiSim_home, FPATH_SEPARATOR);
+    exefile = CVECTOR(strlen(wisim_home) + 1 + strlen("convert_rtd.pl"));
+    sprintf(exefile, "%s%cconvert_rtd.pl", wisim_home, FPATH_SEPARATOR);
 
     //printf("%s\n", exefile);
 
     char *txtfile;
-    txtfile = CVECTOR(strlen(WiSim_home) + 3 + strlen("rtd_input.txt"));
-    sprintf(txtfile, "%s%crtd_input.txt", WiSim_home, FPATH_SEPARATOR);
+    txtfile = CVECTOR(strlen(wisim_home) + 3 + strlen("rtd_input.txt"));
+    sprintf(txtfile, "%s%crtd_input.txt", wisim_home, FPATH_SEPARATOR);
 
     //printf("%s\n", txtfile);
 
@@ -393,7 +393,7 @@ void ConvertRoadTestDataDialog::runPerl() {
 
     //cmd = CVECTOR(strlen(exefile) + strlen(txtfile) + 11);
     // sprintf(cmd, "%s %s %s %c", exefile, "-socket", txtfile, '&');
-    // convert_rtd.pl lies at WiSim_home dir.
+    // convert_rtd.pl lies at wisim_home dir.
 
     cmd = CVECTOR(strlen("convert_rtd.pl") + strlen(txtfile) + 11);
     sprintf(cmd, "%s %s %s %c", "convert_rtd.pl", "-socket", txtfile, '&');
@@ -418,8 +418,8 @@ void ConvertRoadTestDataDialog::runPerl() {
     /*
     // ----------------------------------------------------------------
     // modified on Nov. 25, 2004 by Wei Ben -- use the path --
-    QString sParaName = QString(WiSim_home) + QString(QChar(FPATH_SEPARATOR)) + "file.txt";
-    QString sExeName = QString(WiSim_home) + QString(QChar(FPATH_SEPARATOR)) + "convert_rtd.exe";
+    QString sParaName = QString(wisim_home) + QString(QChar(FPATH_SEPARATOR)) + "file.txt";
+    QString sExeName = QString(wisim_home) + QString(QChar(FPATH_SEPARATOR)) + "convert_rtd.exe";
     QString sCmd = QString("_P_DETACH, \"%1\", \"convert_rtd.exe\",\"-socket\", \"%2\"").arg(sExeName.latin1(), sParaName.latin1());
     _spawnl( sCmd.latin1(), NULL);
 
@@ -432,12 +432,12 @@ void ConvertRoadTestDataDialog::runPerl() {
     // Modified on Nov. 29, 2004.
     // changed to use CVECTOR() to adapt to no-GUI, no QT support --------
     char *exefile;
-    exefile = CVECTOR(strlen(WiSim_home) + 1 + strlen("convert_rtd.exe"));
-    sprintf(exefile, "%s%cconvert_rtd.exe", WiSim_home, FPATH_SEPARATOR);
+    exefile = CVECTOR(strlen(wisim_home) + 1 + strlen("convert_rtd.exe"));
+    sprintf(exefile, "%s%cconvert_rtd.exe", wisim_home, FPATH_SEPARATOR);
 
     char *txtfile;
-    txtfile = CVECTOR(strlen(WiSim_home) + 3 + strlen("rtd_input.txt"));
-    sprintf(txtfile, "\"%s%crtd_input.txt\"", WiSim_home, FPATH_SEPARATOR);
+    txtfile = CVECTOR(strlen(wisim_home) + 3 + strlen("rtd_input.txt"));
+    sprintf(txtfile, "\"%s%crtd_input.txt\"", wisim_home, FPATH_SEPARATOR);
 
     _spawnl( _P_DETACH, exefile, "convert_rtd.exe", "-socket", txtfile, NULL );  
     ServerInfo *server = new ServerInfo();

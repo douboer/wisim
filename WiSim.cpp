@@ -1,5 +1,5 @@
 /******************************************************************************************/
-/**** PROGRAM: WiSim.cpp                                                             ****/
+/**** PROGRAM: wisim.cpp                                                             ****/
 /**** Michael Mandell 1/14/02                                                          ****/
 /******************************************************************************************/
 /**** Simulate cellular network using event-based Monte-Carlo simulation               ****/
@@ -23,7 +23,7 @@
 #include "antenna.h"
 #include "bin_io.h"
 #include "cconst.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "coverage.h"
 #include "clutter_data_analysis.h"
 #include "doubleintint.h"

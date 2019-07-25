@@ -17,7 +17,7 @@
 #include <iostream>
 
 #include "sector_prop_table.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "phs.h"
 #include "cconst.h"
 

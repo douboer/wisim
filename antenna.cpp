@@ -10,7 +10,7 @@
 #include <QDebug>
 
 #include "cconst.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "antenna.h"
 
 /******************************************************************************************/

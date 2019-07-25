@@ -8,7 +8,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-#include "WiSim.h"
+#include "wisim.h"
 
 using namespace std;
 /******************************************************************************************/

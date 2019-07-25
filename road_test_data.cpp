@@ -10,7 +10,7 @@
 
 #include "antenna.h"
 #include "cconst.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "clutter_data_analysis.h"
 #include "intint.h"
 #include "list.h"
@@ -541,7 +541,7 @@ void NetworkClass::read_road_test_data_1_2(FILE *fp, char *line, char *filename,
     int curr_prog;
     int byte_num_thr = 0;
 
-    extern char* WiSim_home;
+    extern char* wisim_home;
     
     enum state_enum {
         STATE_COORDINATE_SYSTEM,
@@ -583,7 +583,7 @@ void NetworkClass::read_road_test_data_1_2(FILE *fp, char *line, char *filename,
     
     FILE* fp_indoor;
     char filename_indoor[200];
-    sprintf(filename_indoor, "%s%c%s", WiSim_home, FPATH_SEPARATOR, "IndoorList.txt");
+    sprintf(filename_indoor, "%s%c%s", wisim_home, FPATH_SEPARATOR, "IndoorList.txt");
     if ( NULL == (fp_indoor = fopen(filename_indoor,"r")) ) {
         sprintf(msg, "WARNING: no indoor file found");
         PRMSG(stdout, msg);  

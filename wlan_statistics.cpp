@@ -5,7 +5,7 @@
 #include "cconst.h"
 #include "wlan_statistics.h"
 #include "traffic_type.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "wlan.h"
 
 #include <string.h>

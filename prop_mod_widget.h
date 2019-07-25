@@ -11,7 +11,7 @@
 //Added by qt3to4:
 #include <Q3GridLayout>
 #include <QLabel>
-#include "WiSim.h"
+#include "wisim.h"
 #include "prop_model.h"
 
 class Q3GridLayout;

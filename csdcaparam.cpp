@@ -12,7 +12,7 @@
 
 #include "cconst.h"
 #include "csdcaparam.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "phs.h"
 
 csDcaParam::csDcaParam( NetworkClass *np_param, QWidget* parent, const char* name )

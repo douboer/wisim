@@ -18,7 +18,7 @@
 #include <Q3GridLayout>
 
 #include "cvg_info_wid.h"
-#include "WiSim.h"
+#include "wisim.h"
 
 #include <qstring.h>
 // added by Wei Ben

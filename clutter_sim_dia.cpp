@@ -22,7 +22,7 @@
 #include <Q3HBoxLayout>
 
 #include "clutter_sim_dia.h"
-#include "WiSim.h"
+#include "wisim.h"
 
 ClutterSim::ClutterSim( NetworkClass* np_param, QWidget* parent, const char* name )
     : QDialog( parent, name, true )

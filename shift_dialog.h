@@ -15,7 +15,7 @@
 #include <Q3GridLayout>
 #include <Q3HBoxLayout>
 #include <QLabel>
-#include "WiSim.h"
+#include "wisim.h"
 
 class Q3VBoxLayout;
 class Q3HBoxLayout;

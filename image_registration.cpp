@@ -34,8 +34,8 @@
 
 #include "cconst.h"
 #include "icons.h"
-#include "WiSim.h"
-#include "WiSim_gui.h"
+#include "wisim.h"
+#include "wisim_gui.h"
 #include "image_registration.h"
 #include "filechooser.h"
 
@@ -791,7 +791,7 @@ void ImageRegistration::ok_button_clicked()
             exit(1);
         }
 
-        tab_file << "!Table\n" << "!Created by WiSim\n\n";
+        tab_file << "!Table\n" << "!Created by wisim\n\n";
 #if MAP_DEBUG
         // For mapinfo system.
         tab_file << "!table\n!version 300\n!charset WindowsSimpChinese\n\n";

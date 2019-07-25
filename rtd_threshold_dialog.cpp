@@ -26,7 +26,7 @@
 #include <Q3GridLayout>
 #include <Q3VBoxLayout>
 
-#include "WiSim.h"
+#include "wisim.h"
 #include "cconst.h"
 #include "pref.h"
 #include "road_test_data.h"

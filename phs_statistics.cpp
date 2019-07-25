@@ -7,7 +7,7 @@
 #include "cconst.h"
 #include "phs_statistics.h"
 #include "traffic_type.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "phs.h"
 
 /******************************************************************************************/

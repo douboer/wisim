@@ -27,7 +27,7 @@
 #include <Q3GridLayout>
 #include <Q3VBoxLayout>
 
-#include "WiSim.h"
+#include "wisim.h"
 #include "pref.h"
 
 /*

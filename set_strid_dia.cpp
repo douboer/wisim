@@ -24,7 +24,7 @@
 #include <Q3HBoxLayout>
 #include <Q3VBoxLayout>
 
-#include "WiSim.h"
+#include "wisim.h"
 #include "coverage.h"
 #include "gconst.h"
 #include "set_strid_dia.h"

@@ -6,17 +6,17 @@
 #include "database_fn.h"
 #include "polygon.h"
 #include "phs.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "prop_model.h"
 #include "antenna.h"
 #include "pref.h"
 
-void  PHSNetworkClass::read_geometry_db(char *WiSim_home)
+void  PHSNetworkClass::read_geometry_db(char *wisim_home)
 {
 #if 0
 // xxxxxxxxxxx Update for new Road Test Data structure
-    char *antenna_filepath = CVECTOR( strlen(WiSim_home) + strlen("/antenna/") );
-    sprintf(antenna_filepath, "%s%cantenna%c", WiSim_home, FPATH_SEPARATOR, FPATH_SEPARATOR);
+    char *antenna_filepath = CVECTOR( strlen(wisim_home) + strlen("/antenna/") );
+    sprintf(antenna_filepath, "%s%cantenna%c", wisim_home, FPATH_SEPARATOR, FPATH_SEPARATOR);
 
   DBClass TempDB;
   char* errmsg = CVECTOR(255);

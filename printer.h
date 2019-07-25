@@ -12,7 +12,7 @@
 #include <qlayout.h>
 //Added by qt3to4:
 #include <QCloseEvent>
-#include "WiSim_gui.h"
+#include "wisim_gui.h"
 
 
 /******************************************************************************************/

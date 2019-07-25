@@ -2,7 +2,7 @@
 /**** FILE: set_language.cpp                                                           ****/
 /******************************************************************************************/
 #include "cconst.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "set_language.h"
 
 QFont *application_font = (QFont *) NULL;
@@ -28,7 +28,7 @@ void set_language(int language)
         if (language == CConst::zh) {
             translator = new QTranslator(0);
 #if TR_EMBED
-            translator->load( WiSim_zh_qm_data, WiSim_zh_qm_len );
+            translator->load( wisim_zh_qm_data, wisim_zh_qm_len );
 #else
             translator->load( QString( "WiSim_zh.qm" ), "." );
 #endif

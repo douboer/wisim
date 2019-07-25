@@ -7,13 +7,13 @@
 #include <stdlib.h>
 
 #include "cconst.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "pref.h"
 #include "cconst.h"
 
 #if HAS_GUI
 #include "gconst.h"
-#include "WiSim_gui.h"
+#include "wisim_gui.h"
 #endif
 
 /*****************************************************************************************/

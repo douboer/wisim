@@ -22,7 +22,7 @@
 
 #include "gconst.h"
 #include "icons.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "info_window.h"
 #include "list.h"
 #include "strint.h"

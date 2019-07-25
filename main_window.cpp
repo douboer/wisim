@@ -29,7 +29,7 @@
 #endif
 
 #include "cconst.h"
-#include "WiSim_gui.h"
+#include "wisim_gui.h"
 #include "command_window.h"
 #include "coverage.h"
 #include "gcall.h"
@@ -47,7 +47,7 @@
 #include "visibility_window.h"
 
 extern QFont *fixed_width_font;
-extern char *WiSim_home;
+extern char *wisim_home;
 
 /******************************************************************************************/
 /**** FUNCTION: MainWindowClass::MainWindowClass                                       ****/
@@ -744,13 +744,13 @@ void MainWindowClass::execute_display_excel_geometry()
             }
         }
         editor->excel_file = strdup(np->line_buf);
-        filename = CVECTOR(strlen(WiSim_home) + 1 + strlen("read_excel_geo.exe"));
-        sprintf(filename, "%s%cread_excel_geo.exe", WiSim_home, FPATH_SEPARATOR);
+        filename = CVECTOR(strlen(wisim_home) + 1 + strlen("read_excel_geo.exe"));
+        sprintf(filename, "%s%cread_excel_geo.exe", wisim_home, FPATH_SEPARATOR);
 
         new SelectCSIDFormatDialog(&csid_format_val, this);
 
         spawnl(_P_WAIT,filename, "2", editor->excel_file, NULL);
-        sprintf(filename, "%s%cread_excel_geo.txt", WiSim_home, FPATH_SEPARATOR);
+        sprintf(filename, "%s%cread_excel_geo.txt", wisim_home, FPATH_SEPARATOR);
         if ( !(fp = fopen(filename, "rb")) ) {
             s = "<h3>WiSIM</h3>";
             s += "<ul>";

@@ -10,7 +10,7 @@
 #include <vector>
 
 #include "road_test_data.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "list.h"
 #include "pref.h"
 #include "phs.h"
@@ -19,7 +19,7 @@
 
 #if HAS_GUI
 #include "cs_lonlat_error_dialog.h"
-#include "WiSim_gui.h"
+#include "wisim_gui.h"
 #include <q3ptrlist.h>
 #include <q3strlist.h>
 #include <q3progressdialog.h>

@@ -6,7 +6,7 @@
 #include <string.h>
 #include <math.h>
 #include "cconst.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "antenna.h"
 #include "map_height.h"
 #include "bin_io.h"

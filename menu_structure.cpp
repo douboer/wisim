@@ -12,8 +12,8 @@
 #include <Q3PopupMenu>
 
 #include "cconst.h"
-#include "WiSim_gui.h"
-#include "WiSim.h"
+#include "wisim_gui.h"
+#include "wisim.h"
 #include "icons.h"
 #include "list.h"
 #include "main_window.h"

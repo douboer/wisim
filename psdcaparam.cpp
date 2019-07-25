@@ -17,7 +17,7 @@
 
 #include "cconst.h"
 #include "psdcaparam.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "phs.h"
 
 psDcaParam::psDcaParam( NetworkClass* np_param, QWidget* parent, const char* name )

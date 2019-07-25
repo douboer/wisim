@@ -3,7 +3,7 @@
 /**** Chengan 4/01/05                                                                  ****/
 /******************************************************************************************/
 
-#include "WiSim_gui.h"
+#include "wisim_gui.h"
 #include "pref.h"
 #include "set_shape_dialog.h"
 #include "convert_road_test_data_dialog.h"

@@ -13,7 +13,7 @@
 #include "phs.h"
 #include "wcdma.h"
 #include "wlan.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "antenna.h"
 #include "prop_model.h"
 #include "clutter_data_analysis.h"
@@ -24,7 +24,7 @@
 #include <QDebug>
 
 #if HAS_GUI
-#include "WiSim_gui.h"
+#include "wisim_gui.h"
 #endif
 
 #define PHS_GEOMETRY_FORMAT "1.5"
@@ -39,7 +39,7 @@
 /**** Lines beginning with "#" are treated as comments.                                ****/
 /**** Version/technology support added.                                                ****/
 /******************************************************************************************/
-void NetworkClass::read_geometry(char *filename, char *WiSim_home, char *force_fmt)
+void NetworkClass::read_geometry(char *filename, char *wisim_home, char *force_fmt)
 {
     int i;
     int bdy_pt_idx               = -1;
@@ -76,8 +76,8 @@ void NetworkClass::read_geometry(char *filename, char *WiSim_home, char *force_f
     strcat(msg, filename);
     PRMSG(stdout, msg);
 
-    antenna_filepath = CVECTOR( strlen(WiSim_home) + strlen("/antenna/") );
-    sprintf(antenna_filepath, "%s%cantenna%c", WiSim_home, FPATH_SEPARATOR, FPATH_SEPARATOR);
+    antenna_filepath = CVECTOR( strlen(wisim_home) + strlen("/antenna/") );
+    sprintf(antenna_filepath, "%s%cantenna%c", wisim_home, FPATH_SEPARATOR, FPATH_SEPARATOR);
 
     enum state_enum {
         STATE_TECHNOLOGY,

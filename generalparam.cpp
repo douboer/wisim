@@ -18,7 +18,7 @@
 #include <Q3GridLayout>
 
 #include "generalparam.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "cconst.h"
 #include "phs.h"
 

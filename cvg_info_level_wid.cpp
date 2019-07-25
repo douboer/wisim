@@ -23,7 +23,7 @@
 #include <Q3VBoxLayout>
 
 #include "cvg_info_level_wid.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "cvg_part_disp.h"
 #include "pref.h"
 

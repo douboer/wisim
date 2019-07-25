@@ -14,8 +14,8 @@
 
 #include "antenna.h"
 #include "cconst.h"
-#include "WiSim_gui.h"
-#include "WiSim.h"
+#include "wisim_gui.h"
+#include "wisim.h"
 #include "clutter_data_analysis.h"
 #include "coverage.h"
 #include "gconst.h"

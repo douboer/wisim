@@ -30,14 +30,14 @@
 
 #include "cconst.h"
 #include "license.h"
-#include "WiSim.h"
-#include "WiSim_gui.h"
+#include "wisim.h"
+#include "wisim_gui.h"
 #include "pref.h"
 #include "reg_dia.h"
 #include "reg_form.h"
 #include "randNumStr.h"
 
-extern char *WiSim_home;
+extern char *wisim_home;
 
 using namespace std;
 
@@ -261,7 +261,7 @@ void RegistrationErrorDialog::install_btn_clicked()
 
     if (!fn.isEmpty()) {
         char *install_file = strdup((const char *) fn.local8Bit());
-        show_reg_error_box = install_license_file(install_file, WiSim_home, reg_info, ris);
+        show_reg_error_box = install_license_file(install_file, wisim_home, reg_info, ris);
     }
 
     if (!show_reg_error_box) {

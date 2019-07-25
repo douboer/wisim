@@ -28,8 +28,8 @@
 #include <Q3GridLayout>
 
 #include "cconst.h"
-#include "WiSim_gui.h"
-#include "WiSim.h"
+#include "wisim_gui.h"
+#include "wisim.h"
 #include "phs.h"
 #include "polygon.h"
 #include "subnet_traffic_dia.h"

@@ -14,7 +14,7 @@
 #include <Q3HBoxLayout>
 
 #include "cconst.h"
-#include "WiSim.h"
+#include "wisim.h"
 #include "select_csid_format_dialog.h"
 
 /******************************************************************************************/

@@ -2,8 +2,8 @@
 /**** FILE: addpolygon.cpp                                                             ****/
 /******************************************************************************************/
 
-#include "WiSim_gui.h"
-#include "WiSim.h"
+#include "wisim_gui.h"
+#include "wisim.h"
 #include "gconst.h"
 #include "qapplication.h"
 #include "qmessagebox.h"

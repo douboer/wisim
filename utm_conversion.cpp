@@ -8,7 +8,7 @@
 /******************************************************************************************/
 
 #include <math.h>
-#include "WiSim.h"
+#include "wisim.h"
 #include "utm_conversion.h"
 
 void LLtoUTM( double lon_deg, double lat_deg,
