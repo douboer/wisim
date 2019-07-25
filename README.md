@@ -3,6 +3,8 @@
 
  -- chengan douboer@gmail.com
 
+lua最大的.c文件就一千多行，反观自己代码的洋洋洒洒，常常实在汗颜
+
 
 ```
 1. wireless network simulation
