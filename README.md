@@ -10,6 +10,5 @@
 3. network planning and optimization
 ```
 
-
-![img](https://github.com/douboer/wisim/blob/master/docs/img/1.PNG ){:height="400px" width="400px"}
+<img src="docs/img/1.PNG" width="400" height="400">
 
