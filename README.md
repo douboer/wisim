@@ -11,5 +11,5 @@
 ```
 
 
-![img](docs/img/1.PNG=250x250)
+![img](docs/img/1.PNG | width=250)
 
