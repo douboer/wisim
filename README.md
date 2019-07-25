@@ -10,5 +10,5 @@
 3. network planning and optimization
 ```
 
-<img src="docs/img/1.PNG" width="400" height="400">
+<img src="docs/img/1.PNG" width="800" height="400">
 
