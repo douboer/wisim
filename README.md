@@ -11,5 +11,5 @@
 ```
 
 
-![img](https://github.com/douboer/wisim/blob/master/docs/img/1.PNG | width=250)
+![img](https://github.com/douboer/wisim/blob/master/docs/img/1.PNG ){:height="400px" width="400px"}
 
