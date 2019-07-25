@@ -11,5 +11,5 @@
 ```
 
 
-![img](https://github.com/douboer/wisim/blob/master/docs/img/1.PNG)
+![img](docs/img/1.PNG)
 
