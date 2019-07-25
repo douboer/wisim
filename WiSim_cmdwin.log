@@ -32,67 +32,75 @@ Analysis type LEVEL
 Scan fractional area:    0.9950000
 NPTS_X: 853
 NPTS_Y: 666
-Mon Jul 01 08:49:23 2019
+Thu Jul 25 09:58:31 2019
 BEGIN: scanning area ...
 Scanning with scan_res = 8 ...
 done
-Mon Jul 01 08:49:23 2019
+Thu Jul 25 09:58:31 2019
 Scanning with scan_res = 4 ...
 done
-Mon Jul 01 08:49:23 2019
+Thu Jul 25 09:58:31 2019
 Scanning with scan_res = 2 ...
 done
-Mon Jul 01 08:49:23 2019
+Thu Jul 25 09:58:31 2019
 Scanning with scan_res = 1 ...
 done
-Mon Jul 01 08:49:23 2019
+Thu Jul 25 09:58:31 2019
 DONE: scanning area ...
-Mon Jul 01 08:49:23 2019
+Thu Jul 25 09:58:31 2019
 Running Coverage Analysis:
 Analysis type LEVEL
 Scan fractional area:    0.9950000
 NPTS_X: 853
 NPTS_Y: 666
-Mon Jul 01 08:49:24 2019
+Thu Jul 25 09:58:32 2019
 BEGIN: scanning area ...
 Scanning with scan_res = 16 ...
 done
-Mon Jul 01 08:49:24 2019
+Thu Jul 25 09:58:32 2019
 Scanning with scan_res = 8 ...
 done
-Mon Jul 01 08:49:24 2019
+Thu Jul 25 09:58:32 2019
 Scanning with scan_res = 4 ...
 done
-Mon Jul 01 08:49:24 2019
+Thu Jul 25 09:58:32 2019
 Scanning with scan_res = 2 ...
 done
-Mon Jul 01 08:49:24 2019
+Thu Jul 25 09:58:32 2019
 Scanning with scan_res = 1 ...
 done
-Mon Jul 01 08:49:24 2019
+Thu Jul 25 09:58:32 2019
 DONE: scanning area ...
-Mon Jul 01 08:49:24 2019
+Thu Jul 25 09:58:32 2019
 Running Coverage Analysis:
 Analysis type LEVEL
 Scan fractional area:    0.9950000
 NPTS_X: 853
 NPTS_Y: 666
-Mon Jul 01 08:49:25 2019
+Thu Jul 25 09:58:33 2019
 BEGIN: scanning area ...
 Scanning with scan_res = 16 ...
 done
-Mon Jul 01 08:49:25 2019
+Thu Jul 25 09:58:33 2019
 Scanning with scan_res = 8 ...
 done
-Mon Jul 01 08:49:25 2019
+Thu Jul 25 09:58:33 2019
 Scanning with scan_res = 4 ...
 done
-Mon Jul 01 08:49:25 2019
+Thu Jul 25 09:58:33 2019
 Scanning with scan_res = 2 ...
 done
-Mon Jul 01 08:49:25 2019
+Thu Jul 25 09:58:33 2019
 Scanning with scan_res = 1 ...
 done
-Mon Jul 01 08:49:25 2019
+Thu Jul 25 09:58:33 2019
 DONE: scanning area ...
-Mon Jul 01 08:49:25 2019
+Thu Jul 25 09:58:33 2019
+mode set to EDIT_GEOMETRY
+mode set to SIMULATE
+KPI: 0.0000000000e+000 0.0000000000e+000 0.0000000000e+000 0.0000000000e+000
+match starting...
+ERROR: traffic type "COMM" has no subnets with non-zero traffic
+ERROR: traffic type "LREG" has no subnets with non-zero traffic
+ERROR: Simulation has no specified traffic.  Either no subnets exist or all subnets have arrival_rate zero
+mode set to EDIT_GEOMETRY

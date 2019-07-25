@@ -54,3 +54,7 @@ set_coverage_analysis -name level_type_4 -thr_idx 17 -threshold_db -35.851321
 set_coverage_analysis -name level_type_4 -thr_idx 18 -threshold_db -34.430811
 set_coverage_analysis -name level_type_4 -thr_idx 19 -threshold_db -33.010300
 run_coverage -name level_type_4
+switch_mode -mode edit_geom
+switch_mode -mode simulate
+run_match
+q
